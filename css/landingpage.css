@@ -1,0 +1,12 @@
+.register-button {
+    font-size: 3vw;
+    text-align: center;
+    padding: 4vw;
+    background-color: var(--primary-dark);
+    color: lightgray;
+    text-shadow: 1px 1px gray;
+}
+
+.register-button:hover {
+    background-color: var(--primary-normal);
+}
