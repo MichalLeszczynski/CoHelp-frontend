@@ -57,9 +57,18 @@ a {
     font-size: 14px;
 }
 
+.text-bar {
+    background-color: var(--primary-light);
+    color: black;
+    text-align: center;
+    font-size: 32px;
+    margin-top: 4vh;
+}
+
 .back-button {
     background-color: var(--secondary-dark);
     color: white;
     text-align: center;
-    font-size: 40px;
+    font-size: 36px;
+    margin-top: 4vh;
 }

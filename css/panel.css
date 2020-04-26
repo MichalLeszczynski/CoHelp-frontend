@@ -1,0 +1,28 @@
+.entry-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.title-entry {
+    background-color: var(--primary-light) !important;
+    color: black !important;
+}
+
+.empty-entry {
+    display: flex;
+    flex: 1;
+    padding: 12px;
+    margin: 8px;
+}
+
+.entry {
+    background-color: var(--secondary-normal);
+    color: white;
+    display: flex;
+    flex: 1;
+    padding: 12px;
+    margin: 8px;
+    justify-content: center;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
