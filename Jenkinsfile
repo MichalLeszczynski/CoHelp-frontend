@@ -6,7 +6,7 @@ pipeline {
   }
   environment {
     IDENTIFIER = "${env.BRANCH_NAME == "master" ? "master" : "develop"}"
-    PORT = "${env.BRANCH_NAME == "master" ? 80 : 10080}"
+    PORT = "${env.BRANCH_NAME == "master" ? 7000 : 17000}"
   }
   
   stages {
