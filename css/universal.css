@@ -72,3 +72,7 @@ a {
     font-size: 36px;
     margin-top: 4vh;
 }
+
+input {
+    border: none;
+}

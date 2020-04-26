@@ -17,8 +17,8 @@
 }
 
 .entry {
-    background-color: var(--secondary-normal);
-    color: white;
+    background-color: var(--primary-dark);
+    color: black;
     display: flex;
     flex: 1;
     padding: 12px;
