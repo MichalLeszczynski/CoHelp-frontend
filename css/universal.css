@@ -1,16 +1,16 @@
 :root {
-    --primary-light: #7c5e55;
-    --primary-normal: #4f342c;
-    --primary-dark: #260e00;
+    --primary-light: #EEE;
+    --primary-normal: #DDD;
+    --primary-dark: #CCC;
 
-    --secondary-light: #ff833a;
-    --secondary-normal: #e65100;
-    --secondary-dark: #ac1900;
+    --secondary-light: #444;
+    --secondary-normal: #333;
+    --secondary-dark: #222;
 }
 
 * {
-    transition: all;
-    transition-duration: 0.6s;
+    transition: background-color;
+    transition-duration: 1s;
     font-family: 'Manrope', sans-serif;
 }
 
@@ -41,7 +41,7 @@ a {
 
 .top-box {
     padding: 0.8vw;
-    background-color: var(--secondary-light);
+    background-color: var(--primary-light);
 }
 
 .title-box {
@@ -53,7 +53,7 @@ a {
 }
 
 .content-box {
-    background-color: var(--primary-light);
+    background-color: var(--primary-normal);
     font-size: 14px;
 }
 

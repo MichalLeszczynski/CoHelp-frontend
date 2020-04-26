@@ -2,11 +2,12 @@
     font-size: 3vw;
     text-align: center;
     padding: 4vw;
-    background-color: var(--primary-dark);
+    background-color: var(--secondary-dark);
     color: lightgray;
     text-shadow: 1px 1px gray;
+    transition-duration: 0.3s;
 }
 
 .register-button:hover {
-    background-color: var(--primary-normal);
+    background-color: var(--secondary-normal);
 }
