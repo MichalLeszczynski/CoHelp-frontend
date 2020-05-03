@@ -1,0 +1,32 @@
+<div>
+    <div class="block">
+        <form id="loginform" style="display: flex; flex-direction: column;">
+            <input class="block" placeholder="Numer telefonu" type="tel" name="phoneNumber" minlength="9" maxlength="9"/>
+            <input class="block" placeholder="Hasło" type="password" name="password" minlength="4" maxlength="64"/>
+            <button id="loginbutton" class="block" type="button">Zaloguj</button>
+            <a href="needyRegister.html">
+                <button class="block" type="button">Nie mam jeszcze konta</button>
+            </a>
+        </form>
+    </div>
+    
+    <a href="landingPage.html">
+        <div class="block back-button">
+            Powrót do strony głównej
+        </div>
+    </a>
+    <div class="block">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius odio sit amet orci ullamcorper cursus.
+        Morbi non nunc in metus euismod vulputate. Etiam nec erat nec lectus sagittis suscipit.
+        Etiam turpis odio, placerat non congue non, lobortis at tellus. Mauris rutrum turpis id velit iaculis,
+        sed iaculis arcu rutrum. Fusce tristique, orci vitae bibendum consectetur,
+        justo diam pharetra dui, at porta risus ex imperdiet sem. Donec in imperdiet erat, vitae tempor orci.
+        Donec massa ipsum, aliquam a ligula sed, facilisis congue magna.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius odio sit amet orci ullamcorper cursus.
+        Morbi non nunc in metus euismod vulputate. Etiam nec erat nec lectus sagittis suscipit.
+        Etiam turpis odio, placerat non congue non, lobortis at tellus. Mauris rutrum turpis id velit iaculis,
+        sed iaculis arcu rutrum. Fusce tristique, orci vitae bibendum consectetur,
+        justo diam pharetra dui, at porta risus ex imperdiet sem. Donec in imperdiet erat, vitae tempor orci.
+        Donec massa ipsum, aliquam a ligula sed, facilisis congue magna.
+    </div>
+</div>

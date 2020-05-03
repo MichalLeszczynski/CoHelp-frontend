@@ -8,6 +8,10 @@
 
         <link href="https://fonts.googleapis.com/css?family=Manrope&display=swap" rel="stylesheet">
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.1.0/mustache.min.js"></script>
+        <script src="js/ordererApp.js"></script>
+
         <link rel="stylesheet" href="css/universal.css"/>
         <link rel="stylesheet" href="css/panel.css"/>
     </head>
@@ -53,6 +57,10 @@
                             <div class="entry">2020.04.27</div><div class="entry">Wykonane</div><div class="entry">Zobacz</div>
                         </div>
                     </div>
+                </div>
+
+                <div class="block" id="target">
+                    <button onclick="getSomeData()">request</button>
                 </div>
                 
                 <a href="landingPage.html">

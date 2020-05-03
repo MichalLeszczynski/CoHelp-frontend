@@ -44,15 +44,15 @@ a {
     background-color: var(--primary-light);
 }
 
-.title-box {
+#title-box {
     font-size: 4vw;
 }
 
-.subtitle-box {
+#subtitle-box {
     font-size: 2vw;
 }
 
-.content-box {
+#content-box {
     background-color: var(--primary-normal);
     font-size: 14px;
 }

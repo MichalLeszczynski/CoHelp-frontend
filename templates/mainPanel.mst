@@ -1,0 +1,43 @@
+<div>
+    <div class="block text-bar">
+        Witaj <b>{{ userName }}</b><br>
+        Co będziemy dzisiaj robić?
+    </div>
+
+    <a href="helperNew.html">
+        <div class="block back-button">
+            Chcę komuś pomóc, znajdzmy zlecenie!
+        </div>
+    </a>
+
+    <div class="block text-bar">
+        To są twoje aktualne oraz już wykonane zlecenia!
+    </div>
+
+    <div class="block">
+        <div style="display: flex; flex-direction: column;">
+            <div class="entry-row">
+                <div class="entry title-entry">Data utworzenia</div><div class="entry title-entry">Status</div><div class="empty-entry"></div>
+            </div>
+            <div class="entry-row">
+                <div class="entry">2020.05.20</div><div class="entry">Obecnie realizowane</div><div class="entry">Zobacz</div>
+            </div>
+            <div class="entry-row">
+                <div class="entry">2020.04.30</div><div class="entry">Wykonane</div><div class="entry">Zobacz</div>
+            </div>
+            <div class="entry-row">
+                <div class="entry">2020.04.27</div><div class="entry">Wykonane</div><div class="entry">Zobacz</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="block" id="target">
+        <button onclick="getSomeData()">request</button>
+    </div>
+    
+    <a href="landingPage.html">
+        <div class="block back-button">
+            Tyle na dziś, wyloguj mnie!
+        </div>
+    </a>
+</div>

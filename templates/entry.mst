@@ -1,0 +1,3 @@
+<div class="entry-row">
+    <div class="entry">{{ date }}</div><div class="entry">{{ status }}</div><div class="entry">Zobacz</div>
+</div>
