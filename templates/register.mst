@@ -1,0 +1,40 @@
+<div>
+    <div class="block">
+        <form id="registerForm" style="display: flex; flex-direction: column;">
+            <div class="block">Dane personalne</div>
+            <div class="block">
+                <input class="block" placeholder="Imię" type="text" name="name"/>
+                <input class="block" placeholder="Nazwisko" type="text" name="surname"/>
+            </div>
+            <div class="block">Twój adres</div>
+            <div class="block">
+                <input class="block" placeholder="Adres" type="text" name="addressLine"/>
+                <input class="block" placeholder="Kod pocztowy" type="text" name="postalCode"/>
+                <input class="block" placeholder="Miasto" type="text" name="city"/>
+            </div>
+            <div class="block">Dane do logowania</div>
+            <div class="block">                            
+                <input class="block" placeholder="Numer telefonu" type="tel" name="phoneNumber" minlength="9" maxlength="9"/>
+                <input class="block" placeholder="Hasło" type="password" name="password" minlength="4" maxlength="64"/>
+            </div>
+            <button id="registerButton" class="block" type="button">Zarejestruj</button>
+        </form>
+    </div>
+    <div id="toLoginPage" class="block back-button">
+        Jednak nie chcę się rejestrować!
+    </div>
+    <div class="block">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius odio sit amet orci ullamcorper cursus.
+        Morbi non nunc in metus euismod vulputate. Etiam nec erat nec lectus sagittis suscipit.
+        Etiam turpis odio, placerat non congue non, lobortis at tellus. Mauris rutrum turpis id velit iaculis,
+        sed iaculis arcu rutrum. Fusce tristique, orci vitae bibendum consectetur,
+        justo diam pharetra dui, at porta risus ex imperdiet sem. Donec in imperdiet erat, vitae tempor orci.
+        Donec massa ipsum, aliquam a ligula sed, facilisis congue magna.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius odio sit amet orci ullamcorper cursus.
+        Morbi non nunc in metus euismod vulputate. Etiam nec erat nec lectus sagittis suscipit.
+        Etiam turpis odio, placerat non congue non, lobortis at tellus. Mauris rutrum turpis id velit iaculis,
+        sed iaculis arcu rutrum. Fusce tristique, orci vitae bibendum consectetur,
+        justo diam pharetra dui, at porta risus ex imperdiet sem. Donec in imperdiet erat, vitae tempor orci.
+        Donec massa ipsum, aliquam a ligula sed, facilisis congue magna.
+    </div>
+</div>

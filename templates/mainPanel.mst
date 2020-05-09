@@ -11,30 +11,41 @@
     </a>
 
     <div class="block text-bar">
-        To są twoje aktualne oraz już wykonane zlecenia!
+        To są twoje aktualne zlecenia!
     </div>
 
     <div class="block">
         <div style="display: flex; flex-direction: column;">
             <div class="entry-row">
-                <div class="entry title-entry">Data utworzenia</div><div class="entry title-entry">Status</div><div class="empty-entry"></div>
+                <div class="entry title-entry">Adres</div><div class="entry title-entry">Data dostawy</div><div class="empty-entry"></div>
             </div>
+
+            {{#available}}
             <div class="entry-row">
-                <div class="entry">2020.05.20</div><div class="entry">Obecnie realizowane</div><div class="entry">Zobacz</div>
+                <div class="entry">{{.address.addressLine}}</div><div class="entry">{{.deliveryDate}}</div><div class="entry">Zobacz</div>
             </div>
-            <div class="entry-row">
-                <div class="entry">2020.04.30</div><div class="entry">Wykonane</div><div class="entry">Zobacz</div>
-            </div>
-            <div class="entry-row">
-                <div class="entry">2020.04.27</div><div class="entry">Wykonane</div><div class="entry">Zobacz</div>
-            </div>
+            {{/available}}
         </div>
     </div>
 
-    <div class="block" id="target">
-        <button onclick="getSomeData()">request</button>
+    <div class="block text-bar">
+        To są twoje już wykonane zlecenia!
     </div>
-    
+
+    <div class="block">
+        <div style="display: flex; flex-direction: column;">
+            <div class="entry-row">
+                <div class="entry title-entry">Adres</div><div class="entry title-entry">Data dostawy</div><div class="empty-entry"></div>
+            </div>
+
+            {{#finished}}
+            <div class="entry-row">
+                <div class="entry">{{.address.addressLine}}</div><div class="entry">{{.deliveryDate}}</div><div class="entry">Zobacz</div>
+            </div>
+            {{/finished}}
+        </div>
+    </div>
+
     <a href="landingPage.html">
         <div class="block back-button">
             Tyle na dziś, wyloguj mnie!
