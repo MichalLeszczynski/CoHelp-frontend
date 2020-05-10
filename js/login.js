@@ -1,8 +1,6 @@
 function renderLogin() {
     $("#subtitle-box").html("Logowanie");
-    let output = Mustache.render(loginTemplate, {});
-    output = $.parseHTML(output);
-    $("#content-box").append(output);
+    $("#content-box").append($.parseHTML(Mustache.render(loginTemplate, {})));
 
     $("#registerLink").click(
         function() {
@@ -42,6 +40,8 @@ function renderLogin() {
                 return obj;
             }, {});
             loginData.phoneNumber = "+48" + loginData.phoneNumber;
+            user.phoneNumber = loginData.phoneNumber;
+            user.password = loginData.password;
 
             console.log(loginData);
             $.ajax({
@@ -64,16 +64,15 @@ function renderLogin() {
                     if(code == 404) {
                         msg.errorMsg = "Nie znaleziono takiego użytkownika :(";
                     } else if(code == 401) {
-                        msg.errorMsg = "Użytkownik niezweryfikowany";
-                        console.log(xhr.responseText);
+                        user.userId = JSON.parse(xhr.responseText).userId;
+                        renderClear();
+                        renderAuthorize();
                     } else if(code == 403) {
                         msg.errorMsg = "Niepoprawne hasło";
                     } else {
                         msg.errorMsg = "Nieznany błąd: " + code + " : " + xhr.responseText;
                     }
-                    let output = Mustache.render(errorTemplate, msg);
-                    output = $.parseHTML(output);
-                    $("#loginForm").prepend(output);
+                    $("#loginForm").prepend($.parseHTML(Mustache.render(errorTemplate, msg)));
                 }
             });
         }

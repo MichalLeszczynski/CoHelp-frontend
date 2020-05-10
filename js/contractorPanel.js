@@ -1,8 +1,6 @@
 function renderContractorPanel() {
     $("#subtitle-box").html("Panel pomocnika");
-    let output = Mustache.render(mainPanelTemplate, {});
-    output = $.parseHTML(output);
-    $("#content-box").append(output);
+    $("#content-box").append($.parseHTML(Mustache.render(mainPanelTemplate, {})));
 
     $.ajax({
         async: false,

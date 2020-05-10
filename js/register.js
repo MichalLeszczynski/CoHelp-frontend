@@ -1,8 +1,6 @@
 function renderRegister() {
     $("#subtitle-box").html("Rejestracja");
-    let output = Mustache.render(registerTemplate, {});
-    output = $.parseHTML(output);
-    $("#content-box").append(output);
+    $("#content-box").append($.parseHTML(Mustache.render(registerTemplate, {})));
 
     $("#toLoginPage").click(
         function() {
@@ -70,7 +68,6 @@ function renderRegister() {
                 data: JSON.stringify(registerData),
                 contentType: "application/json",
                 success: function(data) {
-                    console.log(data);
                     renderClear();
                     renderLogin();
                     alert("Udało ci się zarejetrować! Użyj swoich danych aby się zalogować.");
@@ -89,9 +86,7 @@ function renderRegister() {
                     } else {
                         msg.errorMsg = "Nieznany błąd: " + code + " : " + xhr.responseText;
                     }
-                    let output = Mustache.render(errorTemplate, msg);
-                    output = $.parseHTML(output);
-                    $("#registerForm").prepend(output);
+                    $("#registerForm").prepend($.parseHTML(Mustache.render(errorTemplate, msg)));
                 }
             });
         }

@@ -12,10 +12,11 @@ const orders = {
     available: null
 }
 
+let registerTemplate = null;
 let loginTemplate = null;
+let authorizeTemplate = null;
 let entryTemplate = null;
 let mainPanelTemplate = null;
-let registerTemplate = null;
 let errorTemplate = null;
 
 const serverURL = "http://185.238.75.42:6010";
@@ -35,6 +36,10 @@ $.get('templates/mainPanel.mst', function(data) {
 
 $.get('templates/error.mst', function(data) {
     errorTemplate = data;
+});
+
+$.get('templates/authorize.mst', function(data) {
+    authorizeTemplate = data;
 });
 
 function renderClear() {
