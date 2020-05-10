@@ -8,16 +8,16 @@
             </div>
             <div class="block">Twój adres</div>
             <div class="block">
+                <input class="block" placeholder="Miasto" type="text" name="city"/>
                 <input class="block" placeholder="Adres" type="text" name="addressLine"/>
                 <input class="block" placeholder="Kod pocztowy" type="text" name="postalCode"/>
-                <input class="block" placeholder="Miasto" type="text" name="city"/>
             </div>
             <div class="block">Dane do logowania</div>
             <div class="block">                            
-                <input class="block" placeholder="Numer telefonu" type="tel" name="phoneNumber" minlength="9" maxlength="9"/>
-                <input class="block" placeholder="Hasło" type="password" name="password" minlength="4" maxlength="64"/>
+                <input class="block" placeholder="Numer telefonu" type="number" name="phoneNumber" maxlength="9"/>
+                <input class="block" placeholder="Hasło" type="password" name="password" maxlength="64"/>
             </div>
-            <button id="registerButton" class="block" type="button">Zarejestruj</button>
+            <input id="registerButton" class="block" type="submit" value="Zarejestruj">
         </form>
     </div>
     <div id="toLoginPage" class="block back-button">

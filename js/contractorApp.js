@@ -113,17 +113,54 @@ function renderRegister() {
             renderLogin();
         }
     );
-
-    $("#registerButton").click(
-        function() {
-            registerData = $("#registerForm").serializeArray().reduce(function(obj, item) {
+    
+    // validate
+    $("#registerForm").submit(function(e) { e.preventDefault(); }).validate({
+        rules: {
+            name: "required",
+            surname: "required",
+            city: "required",
+            addressLine: "required",
+            postalCode: "required",
+            phoneNumber: {
+                required: true,
+                minlength: 9,
+                maxlength: 9
+            },
+            password: {
+                required: true,
+                minlength: 4
+            },
+        },
+        // Specify validation error messages
+        messages: {
+            name: "Podaj swoje imię",
+            surname: "Podaj swoje nazwisko",
+            city: "Podaj miasto",
+            addressLine: "Podaj ulicę",
+            postalCode: "Podaj kod pocztowy",
+            phoneNumber: {
+                required: "Wpisz swój numer telefonu",
+                minlength: "Numer telefonu musi składać się z 9\'ciu cyfr",
+                maxlength: "Numer telefonu musi składać się z 9\'ciu cyfr",
+            },
+            password: {
+                required: "Wpisz hasło",
+                minlength: "Hasło musi mieć co najmniej 4 znaki"
+            },
+        },
+        submitHandler: function(form) {
+            // get data
+            let registerData = $("#registerForm").serializeArray().reduce(function(obj, item) {
                 obj[item.name] = item.value;
                 return obj;
             }, {});
+            registerData.accountType = "contractor";
             registerData.phoneNumber = "+48" + registerData.phoneNumber;
             registerData.address = { };
             registerData.address.addressLine = registerData.addressLine;
             registerData.address.postalCode = registerData.postalCode;
+            registerData.address.city = registerData.city;
             registerData.address.city = registerData.city;
             delete registerData.addressLine;
             delete registerData.postalCode;
@@ -155,7 +192,7 @@ function renderRegister() {
                     } else if(code == 403) {
                         msg.errorMsg = "Niepoprawne hasło";
                     } else {
-                        msg.errorMsg = "Nieznany błąd: " + code;
+                        msg.errorMsg = "Nieznany błąd: " + code + " : " + xhr.responseText;
                     }
                     let output = Mustache.render(errorTemplate, msg);
                     output = $.parseHTML(output);
@@ -163,7 +200,7 @@ function renderRegister() {
                 }
             });
         }
-    );
+    });
 }
 
 function renderMainPanel() {

@@ -61,7 +61,7 @@ a {
     background-color: var(--primary-light);
     color: black;
     text-align: center;
-    font-size: 32px;
+    font-size: 26px;
     margin-top: 4vh;
 }
 
@@ -69,17 +69,23 @@ a {
     background-color: var(--secondary-dark);
     color: white;
     text-align: center;
-    font-size: 36px;
-    margin-top: 4vh;
+    font-size: 26px;
     cursor: pointer;
 }
 
 .error {
-    background-color: darkred;
+    background-color: #711;
     color: white;
-    text-align: center;
-    font-size: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin: 8px;
+    padding: 6px;
+    display: inline-block;
 }
+
+.error::placeholder {
+    color: white;
+    font-weight: bold;
+} 
 
 input {
     border: none;
