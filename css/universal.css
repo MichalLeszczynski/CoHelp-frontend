@@ -87,6 +87,6 @@ a {
     font-weight: bold;
 } 
 
-input {
+input, button {
     border: none;
 }

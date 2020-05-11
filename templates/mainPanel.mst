@@ -9,6 +9,26 @@
             Chcę komuś pomóc, znajdzmy zlecenie!
         </div>
     </a>
+    
+    <div class="block text-bar">
+        To są zlecenia które możesz przyjąć
+    </div>
+
+    <div class="block">
+        <div style="display: flex; flex-direction: column;">
+            <div class="entry-row">
+                <div class="entry title-entry">Adres</div><div class="entry title-entry">Data dostawy</div><div class="empty-entry"></div>
+            </div>
+
+            {{#available}}
+            <div class="entry-row">
+                <div class="entry">{{address.addressLine}}</div>
+                <div class="entry">{{deliveryDate}}</div>
+                <button class="entry entry-button" value="{{ id }}">Zobacz</button>
+            </div>
+            {{/available}}
+        </div>
+    </div>
 
     <div class="block text-bar">
         To są twoje aktualne zlecenia!
@@ -20,11 +40,13 @@
                 <div class="entry title-entry">Adres</div><div class="entry title-entry">Data dostawy</div><div class="empty-entry"></div>
             </div>
 
-            {{#available}}
+            {{#accepted}}
             <div class="entry-row">
-                <div class="entry">{{.address.addressLine}}</div><div class="entry">{{.deliveryDate}}</div><div class="entry">Zobacz</div>
+                <div class="entry">{{address.addressLine}}</div>
+                <div class="entry">{{deliveryDate}}</div>
+                <button class="entry entry-button" value="{{ id }}">Zobacz</button>
             </div>
-            {{/available}}
+            {{/accepted}}
         </div>
     </div>
 
@@ -40,11 +62,14 @@
 
             {{#finished}}
             <div class="entry-row">
-                <div class="entry">{{.address.addressLine}}</div><div class="entry">{{.deliveryDate}}</div><div class="entry">Zobacz</div>
+                <div class="entry">{{address.addressLine}}</div>
+                <div class="entry">{{deliveryDate}}</div>
+                <button class="entry entry-button" value="{{ id }}">Zobacz</button>
             </div>
             {{/finished}}
         </div>
     </div>
+
 
     <a href="landingPage.html">
         <div class="block back-button">

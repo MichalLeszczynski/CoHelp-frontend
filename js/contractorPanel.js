@@ -1,7 +1,12 @@
+const orders = {
+    accepted: null,
+    finished: null,
+    available: null
+}
+
 function renderContractorPanel() {
     $("#subtitle-box").html("Panel pomocnika");
-    $("#content-box").append($.parseHTML(Mustache.render(mainPanelTemplate, {})));
-
+    
     $.ajax({
         async: false,
         url: serverURL + "/api/Orders/ContractorAcceptedOrdersHistory",
@@ -10,7 +15,7 @@ function renderContractorPanel() {
         headers: { Authorization: "Bearer " + user.authToken },
         success: function(data) { orders.accepted = data; }
     });
-
+    
     $.ajax({
         async: false,
         url: serverURL + "/api/Orders/ContractorFinishedOrdersHistory",
@@ -19,7 +24,7 @@ function renderContractorPanel() {
         headers: { Authorization: "Bearer " + user.authToken },
         success: function(data) { orders.finished = data; }
     });
-
+    
     $.ajax({
         async: false,
         url: serverURL + "/api/Orders/ContractorAvailableOrdersHistory",
@@ -28,16 +33,12 @@ function renderContractorPanel() {
         headers: { Authorization: "Bearer " + user.authToken },
         success: function(data) { orders.available = data; }
     });
-
+    
     console.log(orders);
+    $("#content-box").append($.parseHTML(Mustache.render(mainPanelTemplate, orders)));
 
-    // $("#loginbutton").click(
-    //     function() {
-    //         loginData = $("#loginform").serializeArray().reduce(function(obj, item) {
-    //             obj[item.name] = item.value;
-    //             return obj;
-    //         }, {});
-    //         console.log(loginData);
-    //     }
-    // );
+    $(".entry-button").click(function() {
+        const button = $(this);
+        alert(button.val());
+    });
 }

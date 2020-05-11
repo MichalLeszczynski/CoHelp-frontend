@@ -6,12 +6,6 @@ const user = {
     password: null,
 }
 
-const orders = {
-    accepted: null,
-    finished: null,
-    available: null
-}
-
 let registerTemplate = null;
 let loginTemplate = null;
 let authorizeTemplate = null;
