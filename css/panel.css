@@ -26,3 +26,35 @@
     justify-content: center;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
+
+.ui-dialog {
+    background-color: gold;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    padding: 12px;
+}
+
+.ui-dialog-titlebar {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    background-color: aquamarine;
+    padding: 8px;
+}
+
+.ui-dialog-title {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    background-color: blue;
+    color: white;
+    padding: 6px;
+}
+
+.ui-dialog-titlebar-close {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    background-color: crimson;
+    padding: 6px;
+}
+
+.ui-dialog-content {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    background-color: black;
+    color: white;
+    padding: 12px;
+}

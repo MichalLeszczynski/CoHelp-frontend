@@ -41,4 +41,9 @@ function renderContractorPanel() {
         const button = $(this);
         alert(button.val());
     });
+
+    $("#dialog").dialog({ autoOpen: false, width: 600 });
+    $("#opener").click(function() {
+        $("#dialog").dialog("open");
+    });
 }
