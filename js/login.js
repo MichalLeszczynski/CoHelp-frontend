@@ -26,7 +26,7 @@ function renderLogin() {
             },
             password: {
                 required: true,
-                minlength: 4
+                minlength: 6
             },
         },
         // Specify validation error messages
@@ -38,7 +38,7 @@ function renderLogin() {
             },
             password: {
                 required: "Wpisz hasło",
-                minlength: "Hasło musi mieć co najmniej 4 znaki"
+                minlength: "Hasło musi mieć co najmniej 6 znaków"
             },
         },
         submitHandler: function(form) {
@@ -58,7 +58,7 @@ function renderLogin() {
                     user.accountType = data.accountType;
                     user.authToken = data.authToken;
                     user.userId = data.userId;
-                    user.adress = data.adress;
+                    user.address = data.address;
                     user.name = data.name;
                     user.surname = data.surname;
                     console.log(data);

@@ -18,7 +18,7 @@ let errorTemplate = null;
 let remindPasswordTemplate = null;
 let dialogTemplate = null;
 
-const serverURL = "http://185.238.75.42:6010";
+const serverURL = "http://185.238.75.42:16010";
 
 // Get templates with get
 $.get('templates/register.mst', function(data) {

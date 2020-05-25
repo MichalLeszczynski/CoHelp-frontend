@@ -4,17 +4,24 @@
         Co będziemy dzisiaj robić?
     </div>
 
+    <div class="block">
+        Twoje dane:<br>
+        Miasto: <b>{{city}}</b><br>
+        Ulica i numer domu: <b>{{addressLine}}</b><br>
+        Kod pocztowy: <b>{{postalCode}}</b><br>
+    </div>
+
     <a href="helperNew.html">
         <div class="block back-button">
             Chcę komuś pomóc, znajdzmy zlecenie!
         </div>
     </a>
     
-    <div id="changePasswordDialog" class="block back-button">
+    <div id="changePasswordButton" class="block back-button">
         Zmień hasło
     </div>
 
-    <div id="changeAdressDialog" class="block back-button">
+    <div id="changeAdressButton" class="block back-button">
         Zmień dane adresowe
     </div>
 
@@ -95,7 +102,18 @@
             <form id="changePasswordForm" style="display: flex; flex-direction: column;">
                 <input class="block" placeholder="Obecne hasło" type="password" name="currentPassword" maxlength="64"/>
                 <input class="block" placeholder="Nowe hasło" type="password" name="newPassword" maxlength="64"/>
-                <input id="changePasswordButton" class="block" type="submit" value="Zmień moje hasło">
+                <input class="block" type="submit" value="Zmień moje hasło">
+            </form>
+        </div>
+    </div>
+
+    <div id="changeAdressDailog" title="Zmiana adresu">
+        <div class="block">
+            <form id="changeAdressForm" style="display: flex; flex-direction: column;">
+                <input class="block" placeholder="Miasto"             type="text" name="city"/>
+                <input class="block" placeholder="Ulica i numer domu" type="text" name="addressLine"/>
+                <input class="block" placeholder="Kod pocztowy"       type="text" name="postalCode"/>
+                <input class="block" type="submit" value="Zmień mój adres">
             </form>
         </div>
     </div>

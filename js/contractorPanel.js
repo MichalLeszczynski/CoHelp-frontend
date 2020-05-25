@@ -34,6 +34,7 @@ function getOrderData() {
 }
 
 function perpareForms() {
+    // password change
     $("#changePasswordForm").submit(function(e) { e.preventDefault(); }).validate({
         rules: {
             currentPassword: {
@@ -41,7 +42,7 @@ function perpareForms() {
             },
             newPassword: {
                 required: true,
-                minlength: 4
+                minlength: 6
             },
         },
         // Specify validation error messages
@@ -51,7 +52,7 @@ function perpareForms() {
             },
             newPassword: {
                 required: "Wpisz nowe hasło",
-                minlength: "Hasło musi mieć co najmniej 4 znaki"
+                minlength: "Hasło musi mieć co najmniej 6 znaków"
             },
         },
         submitHandler: function(form) {
@@ -87,11 +88,81 @@ function perpareForms() {
             });
         }
     });
+
+    // adress change
+    $("#changeAdressForm").submit(function(e) { e.preventDefault(); }).validate({
+        rules: {
+            city: {
+                required: true,
+            },
+            addressLine: {
+                required: true,
+            },
+            postalCode: {
+                required: true,
+            },
+        },
+        // Specify validation error messages
+        messages: {
+            city: {
+                required: "Wpisz nazwę miasta!",
+            },
+            addressLine: {
+                required: "Wpisz nazwę ulicy oraz numer mieszkania!",
+            },
+            postalCode: {
+                required: "Wpisz swój kod pocztowy",
+            },
+        },
+        submitHandler: function(form) {
+            formData = $("#changeAdressForm").serializeArray().reduce(function(obj, item) {
+                obj[item.name] = item.value;
+                return obj;
+            }, {});
+
+            idData = {
+                "userId": user.userId,
+            };
+
+            console.log(loginData);
+            $.ajax({
+                url: serverURL + "/api/AccountSettings/ChangeAddress" + "?" + jQuery.param(idData),
+                type: "POST",
+                data: JSON.stringify(formData),
+                contentType: "application/json",
+                success: function(data) {
+                    user.address.city = formData.city;
+                    user.address.addressLine = formData.addressLine;
+                    user.address.postalCode = formData.postalCode;
+                    $("#changeAdressDailog").dialog("close");
+                    renderClear();
+                    renderContractorPanel();
+                },
+                error: function(xhr, status, error) {
+                    $("#errorBox").remove();
+                    const msg = {
+                        id: "errorBox",
+                        errorMsg: null
+                    };
+                    const code = parseInt(xhr.status);
+                    if(code == 403) {
+                        msg.errorMsg = "Nie znaleziono podanego adresu!";
+                    } else {
+                        msg.errorMsg = "Nieznany błąd: " + code + " : " + xhr.responseText;
+                    }
+                    $("#changeAdressForm").prepend($.parseHTML(Mustache.render(errorTemplate, msg)));
+                }
+            });
+        }
+    });
 }
 
 function renderContractorPanel() {
+    console.log(user);
     panelData.name = user.name;
-    panelData.surname = user.surname;
+    panelData.city = user.address.city;
+    panelData.addressLine = user.address.addressLine;
+    panelData.postalCode = user.address.postalCode;
     $("#subtitle-box").html("Panel pomocnika");
 
     getOrderData();
@@ -106,8 +177,13 @@ function renderContractorPanel() {
     });
 
     $("#changePasswordDailog").dialog({ autoOpen: false, width: 600 });
-    $("#changePasswordDialog").click(function() {
+    $("#changePasswordButton").click(function() {
         $("#changePasswordDailog").dialog("open");
+    });
+
+    $("#changeAdressDailog").dialog({ autoOpen: false, width: 600 });
+    $("#changeAdressButton").click(function() {
+        $("#changeAdressDailog").dialog("open");
     });
 
     $("#opener").click(function() {

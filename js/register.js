@@ -24,7 +24,7 @@ function renderRegister() {
             },
             password: {
                 required: true,
-                minlength: 4
+                minlength: 6
             },
         },
         // Specify validation error messages
@@ -41,7 +41,7 @@ function renderRegister() {
             },
             password: {
                 required: "Wpisz hasło",
-                minlength: "Hasło musi mieć co najmniej 4 znaki"
+                minlength: "Hasło musi mieć co najmniej 6 znaków"
             },
         },
         submitHandler: function(form) {
