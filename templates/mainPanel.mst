@@ -10,6 +10,14 @@
         </div>
     </a>
     
+    <div id="changePasswordDialog" class="block back-button">
+        Zmień hasło
+    </div>
+
+    <div id="changeAdressDialog" class="block back-button">
+        Zmień dane adresowe
+    </div>
+
     <div class="block text-bar">
         To są zlecenia które możesz przyjąć
     </div>
@@ -70,29 +78,25 @@
         </div>
     </div>
 
-    <div class="block text-bar">
-        <div id="dialog" title="Dialog Title">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Aliquam imperdiet eleifend ligula in interdum. Donec ex felis, 
-            malesuada id euismod sed, volutpat at dui. In in pulvinar ipsum.
-            Donec laoreet sagittis felis id semper. 
-            Maecenas id elit a sem pulvinar semper eu dapibus nulla. 
-            Integer vel lectus at erat laoreet vulputate bibendum nec dolor.
-            Ut cursus, tortor non dapibus lobortis, mauris lacus scelerisque lectus, 
-            quis mollis dolor nibh vitae enim. Maecenas vestibulum finibus neque,
-            ut ullamcorper enim feugiat vitae. Nullam accumsan mauris justo.
-            Praesent eu tincidunt enim. Nam gravida id lorem ac condimentum. 
-            Vivamus id nulla mollis, aliquam ligula lacinia, dignissim nunc. 
-            Sed venenatis nunc sem, nec rutrum velit rhoncus vitae. 
-            Phasellus blandit ipsum at tellus vestibulum ultrices. 
-            Nunc tincidunt orci eu turpis venenatis, eget iaculis elit maximus.
-        </div>
-        <button id="opener">open the dialog</button>
-    </div>
 
     <a href="index.html">
         <div class="block back-button">
             Tyle na dziś, wyloguj mnie!
         </div>
     </a>
+
+    <div class="block text-bar">
+        <button id="opener">open the dialog</button>
+    </div>
+
+    {{! Dailog boxes }}
+    <div id="changePasswordDailog" title="Zmiana hasła">
+        <div class="block">
+            <form id="changePasswordForm" style="display: flex; flex-direction: column;">
+                <input class="block" placeholder="Obecne hasło" type="password" name="currentPassword" maxlength="64"/>
+                <input class="block" placeholder="Nowe hasło" type="password" name="newPassword" maxlength="64"/>
+                <input id="changePasswordButton" class="block" type="submit" value="Zmień moje hasło">
+            </form>
+        </div>
+    </div>
 </div>

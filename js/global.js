@@ -11,10 +11,12 @@ const user = {
 
 let registerTemplate = null;
 let loginTemplate = null;
-let authorizeTemplate = null;
 let entryTemplate = null;
 let mainPanelTemplate = null;
+let authorizeTemplate = null;
 let errorTemplate = null;
+let remindPasswordTemplate = null;
+let dialogTemplate = null;
 
 const serverURL = "http://185.238.75.42:6010";
 
@@ -40,6 +42,10 @@ $.get('templates/authorize.mst', function(data) {
 });
 
 $.get('templates/remindPassword.mst', function(data) {
+    remindPasswordTemplate = data;
+});
+
+$.get('templates/dialog.mst', function(data) {
     remindPasswordTemplate = data;
 });
 
