@@ -1,6 +1,6 @@
 <div>
     <div class="block text-bar">
-        Witaj <b>{{ userName }}</b><br>
+        Witaj <b>{{name}} {{surname}}</b><br>
         Co będziemy dzisiaj robić?
     </div>
 
@@ -31,7 +31,7 @@
     </div>
 
     <div class="block text-bar">
-        To są twoje aktualne zlecenia!
+        To są twoje aktualne zlecenia
     </div>
 
     <div class="block">
@@ -51,7 +51,7 @@
     </div>
 
     <div class="block text-bar">
-        To są twoje już wykonane zlecenia!
+        To są twoje już wykonane zlecenia
     </div>
 
     <div class="block">
@@ -90,7 +90,7 @@
         <button id="opener">open the dialog</button>
     </div>
 
-    <a href="landingPage.html">
+    <a href="index.html">
         <div class="block back-button">
             Tyle na dziś, wyloguj mnie!
         </div>

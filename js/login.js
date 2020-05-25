@@ -51,6 +51,10 @@ function renderLogin() {
                     user.accountType = data.accountType;
                     user.authToken = data.authToken;
                     user.userId = data.userId;
+                    user.adress = data.adress;
+                    user.name = data.name;
+                    user.surname = data.surname;
+                    console.log(data);
                     renderClear();
                     renderContractorPanel();
                 },
@@ -59,7 +63,7 @@ function renderLogin() {
                     const msg = {
                         id: "loginErrorBox",
                         errorMsg: null
-                    }
+                    };
                     const code = parseInt(xhr.status);
                     if(code == 404) {
                         msg.errorMsg = "Nie znaleziono takiego użytkownika :(";

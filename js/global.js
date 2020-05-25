@@ -4,6 +4,9 @@ const user = {
     userId: null,
     phoneNumber: null,
     password: null,
+    adress: null,
+    name: null,
+    surname: null
 }
 
 let registerTemplate = null;

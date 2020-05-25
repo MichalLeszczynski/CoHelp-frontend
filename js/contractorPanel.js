@@ -1,41 +1,43 @@
-const orders = {
+const panelData = {
     accepted: null,
     finished: null,
-    available: null
-}
+    available: null,
+    name: null,
+    surname: null
+};
 
 function renderContractorPanel() {
+    panelData.name = user.name;
+    panelData.surname = user.surname;
     $("#subtitle-box").html("Panel pomocnika");
     
     $.ajax({
         async: false,
-        url: serverURL + "/api/Orders/ContractorAcceptedOrdersHistory",
+        url: serverURL + "/api/Orders/ContractorAcceptedOrdersHistory" + "?userId=" + user.userId,
         type: "GET",
-        data: { userId: user.userId },
         headers: { Authorization: "Bearer " + user.authToken },
-        success: function(data) { orders.accepted = data; }
+        success: function(data) { panelData.accepted = data; }
     });
     
     $.ajax({
         async: false,
-        url: serverURL + "/api/Orders/ContractorFinishedOrdersHistory",
+        url: serverURL + "/api/Orders/ContractorFinishedOrdersHistory" + "?userId=" + user.userId,
         type: "GET",
-        data: { userId: user.userId },
         headers: { Authorization: "Bearer " + user.authToken },
-        success: function(data) { orders.finished = data; }
+        success: function(data) { panelData.finished = data; }
     });
     
     $.ajax({
         async: false,
-        url: serverURL + "/api/Orders/ContractorAvailableOrdersHistory",
+        url: serverURL + "/api/Orders/ContractorAvailableOrdersHistory" + "?userId=" + user.userId,
         type: "GET",
-        data: { userId: user.userId },
         headers: { Authorization: "Bearer " + user.authToken },
-        success: function(data) { orders.available = data; }
+        success: function(data) { panelData.available = data; }
     });
     
-    console.log(orders);
-    $("#content-box").append($.parseHTML(Mustache.render(mainPanelTemplate, orders)));
+    console.log(panelData);
+
+    $("#content-box").append($.parseHTML(Mustache.render(mainPanelTemplate, panelData)));
 
     $(".entry-button").click(function() {
         const button = $(this);

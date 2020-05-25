@@ -9,7 +9,7 @@
             <input id="loginButton" class="block" type="submit" value="Zaloguj"/>
         </form>
     </div>
-    <a href="landingPage.html">
+    <a href="index.html">
         <div class="block back-button">
             Powrót do strony głównej
         </div>
