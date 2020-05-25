@@ -8,6 +8,13 @@ function renderLogin() {
             renderRegister();
         }
     );
+
+    $("#remindLink").click(
+        function() {
+            renderClear();
+            renderRemindPassword();
+        }
+    );
     
     // validate
     $("#loginForm").submit(function(e) { e.preventDefault(); }).validate({

@@ -9,6 +9,9 @@
             <input id="loginButton" class="block" type="submit" value="Zaloguj"/>
         </form>
     </div>
+    <div id="remindLink" class="block back-button">
+        Nie pamiętam hasła do mojego konta
+    </div>
     <a href="index.html">
         <div class="block back-button">
             Powrót do strony głównej

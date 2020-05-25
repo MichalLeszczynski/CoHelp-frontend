@@ -39,6 +39,10 @@ $.get('templates/authorize.mst', function(data) {
     authorizeTemplate = data;
 });
 
+$.get('templates/remindPassword.mst', function(data) {
+    remindPasswordTemplate = data;
+});
+
 function renderClear() {
     $("#content-box").children().remove();
 }
