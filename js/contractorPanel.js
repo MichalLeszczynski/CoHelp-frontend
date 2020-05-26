@@ -1,7 +1,7 @@
 const panelData = {
-    accepted: null,
-    finished: null,
     available: null,
+    finished: null,
+    accepted: null,
     name: null,
     surname: null
 };
@@ -61,8 +61,9 @@ function perpareForms() {
                 return obj;
             }, {});
             formData.userId = user.userId;
-
+            
             console.log(loginData);
+            $("#errorBox").remove();
             $.ajax({
                 url: serverURL + "/api/AccountSettings/ChangePassword" + "?" + jQuery.param(formData),
                 type: "POST",
@@ -72,7 +73,6 @@ function perpareForms() {
                     alert("Twoje hasło zostało zmienione! Przy następnym logowaniu użyj nowego hasła.");
                 },
                 error: function(xhr, status, error) {
-                    $("#errorBox").remove();
                     const msg = {
                         id: "errorBox",
                         errorMsg: null
@@ -125,6 +125,7 @@ function perpareForms() {
             };
 
             console.log(loginData);
+            $("#errorBox").remove();
             $.ajax({
                 url: serverURL + "/api/AccountSettings/ChangeAddress" + "?" + jQuery.param(idData),
                 type: "POST",
@@ -139,7 +140,6 @@ function perpareForms() {
                     renderContractorPanel();
                 },
                 error: function(xhr, status, error) {
-                    $("#errorBox").remove();
                     const msg = {
                         id: "errorBox",
                         errorMsg: null
@@ -160,6 +160,7 @@ function perpareForms() {
 function renderContractorPanel() {
     console.log(user);
     panelData.name = user.name;
+    panelData.surname = user.surname;
     panelData.city = user.address.city;
     panelData.addressLine = user.address.addressLine;
     panelData.postalCode = user.address.postalCode;
@@ -170,11 +171,30 @@ function renderContractorPanel() {
     $("#content-box").append($.parseHTML(Mustache.render(mainPanelTemplate, panelData)));
 
     perpareForms();
+    
+    // initialize panels
+    for(var item of panelData.available) {
+        const id = "#panel-" + item.id;
+        $(id).dialog({ autoOpen: false, width: 600 });
+    }
 
+    for(var item of panelData.finished) {
+        const id = "#panel-" + item.id;
+        $(id).dialog({ autoOpen: false, width: 600 });
+    }
+
+    for(var item of panelData.accepted) {
+        const id = "#panel-" + item.id;
+        $(id).dialog({ autoOpen: false, width: 600 });
+    }
+
+    // prepare buttons
     $(".entry-button").click(function() {
         const button = $(this);
-        alert(button.val());
+        const id = "#panel-" + button.val();
+        $(id).dialog("open");
     });
+
 
     $("#changePasswordDailog").dialog({ autoOpen: false, width: 600 });
     $("#changePasswordButton").click(function() {

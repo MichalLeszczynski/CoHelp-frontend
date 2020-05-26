@@ -62,6 +62,7 @@ function renderRegister() {
             delete registerData.city;
             console.log(registerData);
 
+            $("#loginErrorBox").remove();
             $.ajax({
                 url: serverURL + "/api/Auth/Register",
                 type: "POST",
@@ -73,7 +74,6 @@ function renderRegister() {
                     alert("Udało ci się zarejetrować! Użyj swoich danych aby się zalogować.");
                 },
                 error: function(xhr, status, error) {
-                    $("#loginErrorBox").remove();
                     const msg = {
                         id: "loginErrorBox",
                         errorMsg: null

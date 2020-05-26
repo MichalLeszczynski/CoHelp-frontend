@@ -10,12 +10,6 @@
         Ulica i numer domu: <b>{{addressLine}}</b><br>
         Kod pocztowy: <b>{{postalCode}}</b><br>
     </div>
-
-    <a href="helperNew.html">
-        <div class="block back-button">
-            Chcę komuś pomóc, znajdzmy zlecenie!
-        </div>
-    </a>
     
     <div id="changePasswordButton" class="block back-button">
         Zmień hasło
@@ -117,4 +111,49 @@
             </form>
         </div>
     </div>
+
+    {{! Order panels }}
+    {{#available}}
+    <div id="panel-{{id}}" title="Dostępne">
+        <div class="block">
+            <div class="entry">Identyfikator: {{id}}</div>
+
+            <div class="entry">Misto: {{address.city}}</div>
+            <div class="entry">Ulica: {{address.addressLine}}</div>
+            <div class="entry">Kod pocztowy: {{address.postalCode}}</div>
+
+            <div class="block">
+                <iframe 
+                width="520" height="200" frameborder="0" 
+                src="https://www.bing.com/maps/embed?h=200&w=520&sp=50.05990_19.9453273_Lokacja&cp=50.05990~19.9453273&lvl=16&typ=d&sty=r&src=SHELL&FORM=MBEDV8" 
+                scrolling="no">
+                </iframe>
+            </div>
+
+            <div class="block">
+                <iframe width="520" height="300"
+                src="https://maps.google.com/maps?q={{location.latitude}}%20{{location.longitude}}&t=&z=17&ie=UTF8&iwloc=&output=embed" 
+                frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                </iframe>
+            </div>
+
+            <div class="entry">Lokacja: {{location.latitude}} {{location.longitude}}</div>
+
+            <div class="entry">Sklep: {{prefferedStore}}</div>
+            <div class="entry">Data dostarczenia: {{deliveryDate}}</div>
+
+            <div class="entry">Cena: {{cashAmount}}</div>
+
+            <div class="entry">
+                <ul>
+                    {{#products}}
+                        <li>{{kartofle}}</li>
+                    {{/products}}
+                </ul>
+            </div>
+
+            <div class="entry">Status: {{status}}</div>
+        </div>
+    </div>
+    {{/available}}
 </div>

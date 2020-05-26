@@ -51,6 +51,7 @@ function renderLogin() {
             user.password = loginData.password;
 
             console.log(loginData);
+            $("#loginErrorBox").remove();
             $.ajax({
                 url: serverURL + "/api/Auth/Login" + "?" + jQuery.param(loginData),
                 type: "POST",
@@ -66,7 +67,6 @@ function renderLogin() {
                     renderContractorPanel();
                 },
                 error: function(xhr, status, error) {
-                    $("#loginErrorBox").remove();
                     const msg = {
                         id: "loginErrorBox",
                         errorMsg: null
