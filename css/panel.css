@@ -28,33 +28,38 @@
 }
 
 .ui-dialog {
-    background-color: gold;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    padding: 12px;
 }
 
 .ui-dialog-titlebar {
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    background-color: aquamarine;
+    background-color: slategrey;
     padding: 8px;
+    display: flex;
+    flex-direction: row;
 }
 
 .ui-dialog-title {
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    background-color: blue;
+    background-color: darkslategray;
     color: white;
     padding: 6px;
+    margin: 8px;
+    flex: 3;
 }
 
 .ui-dialog-titlebar-close {
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     background-color: crimson;
+    color: white;
     padding: 6px;
+    margin: 8px;
+    flex: 1;
 }
 
 .ui-dialog-content {
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
     padding: 12px;
 }

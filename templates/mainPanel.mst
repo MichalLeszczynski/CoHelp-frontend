@@ -118,17 +118,7 @@
         <div class="block">
             <div class="entry">Identyfikator: {{id}}</div>
 
-            <div class="entry">Misto: {{address.city}}</div>
-            <div class="entry">Ulica: {{address.addressLine}}</div>
-            <div class="entry">Kod pocztowy: {{address.postalCode}}</div>
-
-            <div class="block">
-                <iframe 
-                width="520" height="200" frameborder="0" 
-                src="https://www.bing.com/maps/embed?h=200&w=520&sp=50.05990_19.9453273_Lokacja&cp=50.05990~19.9453273&lvl=16&typ=d&sty=r&src=SHELL&FORM=MBEDV8" 
-                scrolling="no">
-                </iframe>
-            </div>
+            <div class="entry">Adres: {{address.city}} {{address.postalCode}} {{address.addressLine}}</div>
 
             <div class="block">
                 <iframe width="520" height="300"
@@ -137,9 +127,7 @@
                 </iframe>
             </div>
 
-            <div class="entry">Lokacja: {{location.latitude}} {{location.longitude}}</div>
-
-            <div class="entry">Sklep: {{prefferedStore}}</div>
+            <div class="entry">Preferowany sklep: {{prefferedStore}}</div>
             <div class="entry">Data dostarczenia: {{deliveryDate}}</div>
 
             <div class="entry">Cena: {{cashAmount}}</div>
@@ -147,7 +135,7 @@
             <div class="entry">
                 <ul>
                     {{#products}}
-                        <li>{{kartofle}}</li>
+                        <li>{{name}} w ilości {{amount}}</li>
                     {{/products}}
                 </ul>
             </div>

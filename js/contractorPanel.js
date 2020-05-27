@@ -7,12 +7,31 @@ const panelData = {
 };
 
 function getOrderData() {
+
+    function remapProducts(orderArray) {
+
+        for(const item of orderArray) {
+            const productDict = item.products;
+            output = [];
+            Object.keys(productDict).forEach(function(key) {
+                output.push({
+                    name: key,
+                    amount: productDict[key]
+                });
+            });
+            item.products = output;
+        }
+        return orderArray;
+    }
+
     $.ajax({
         async: false,
         url: serverURL + "/api/Orders/ContractorAcceptedOrdersHistory" + "?userId=" + user.userId,
         type: "GET",
         headers: { Authorization: "Bearer " + user.authToken },
-        success: function(data) { panelData.accepted = data; }
+        success: function(data) {
+            panelData.accepted = remapProducts(data);
+        }
     });
     
     $.ajax({
@@ -20,7 +39,9 @@ function getOrderData() {
         url: serverURL + "/api/Orders/ContractorFinishedOrdersHistory" + "?userId=" + user.userId,
         type: "GET",
         headers: { Authorization: "Bearer " + user.authToken },
-        success: function(data) { panelData.finished = data; }
+        success: function(data) {
+            panelData.finished = remapProducts(data);
+        }
     });
     
     $.ajax({
@@ -28,7 +49,10 @@ function getOrderData() {
         url: serverURL + "/api/Orders/ContractorAvailableOrdersHistory" + "?userId=" + user.userId,
         type: "GET",
         headers: { Authorization: "Bearer " + user.authToken },
-        success: function(data) { panelData.available = data; }
+        success: function(data) {
+            console.log(data);
+            panelData.available = remapProducts(data);
+        }
     });
     console.log(panelData);
 }
@@ -175,17 +199,17 @@ function renderContractorPanel() {
     // initialize panels
     for(var item of panelData.available) {
         const id = "#panel-" + item.id;
-        $(id).dialog({ autoOpen: false, width: 600 });
+        $(id).dialog({ autoOpen: false, width: 600, closeText: "Zamknij panel" });
     }
 
     for(var item of panelData.finished) {
         const id = "#panel-" + item.id;
-        $(id).dialog({ autoOpen: false, width: 600 });
+        $(id).dialog({ autoOpen: false, width: 600, closeText: "Zamknij panel" });
     }
 
     for(var item of panelData.accepted) {
         const id = "#panel-" + item.id;
-        $(id).dialog({ autoOpen: false, width: 600 });
+        $(id).dialog({ autoOpen: false, width: 600, closeText: "Zamknij panel" });
     }
 
     // prepare buttons
@@ -196,12 +220,12 @@ function renderContractorPanel() {
     });
 
 
-    $("#changePasswordDailog").dialog({ autoOpen: false, width: 600 });
+    $("#changePasswordDailog").dialog({ autoOpen: false, width: 600, closeText: "Zamknij panel" });
     $("#changePasswordButton").click(function() {
         $("#changePasswordDailog").dialog("open");
     });
 
-    $("#changeAdressDailog").dialog({ autoOpen: false, width: 600 });
+    $("#changeAdressDailog").dialog({ autoOpen: false, width: 600, closeText: "Zamknij panel" });
     $("#changeAdressButton").click(function() {
         $("#changeAdressDailog").dialog("open");
     });
