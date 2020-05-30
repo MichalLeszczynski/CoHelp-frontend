@@ -1,0 +1,50 @@
+
+<div>
+    <div class="block text-bar">
+        Nowa lista produktów
+    </div>
+
+    <div class="block">
+        <div style="display: flex; flex-direction: column;">
+            <div class="entry-row">
+                <div class="entry title-entry">Nazwa produktu</div><div class="entry title-entry">Ilość</div>
+            </div>
+            <div class="entry-row">
+                <input class="entry" type="text"/>
+                <input class="entry" type="text"/>
+            </div>
+            <div class="entry-row">
+                <input class="entry" type="text"/>
+                <input class="entry" type="text"/>
+            </div>
+            <div class="entry-row">
+                <input class="entry" type="text"/>
+                <input class="entry" type="text"/>
+            </div>
+            <div class="entry-row">
+                <input class="entry" type="text"/>
+                <input class="entry" type="text"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="entry-row">
+        <div class="entry">Dodaj nowe miejece na produkt</div>
+        <div class="entry">Usuń ostatnie miejsce na produkt</div>
+    </div>
+
+    <div class="block">
+        <div class="entry-row">
+            <div class="entry">Preferowany sklep (zostaw puste jeżeli nie masz preferencji)</div>
+            <input class="entry" type="text"/>
+        </div>
+    </div>
+
+    <div class="block back-button">
+        Zapisz i opublikuj zlecenie
+    </div>
+    
+    <div class="block back-button">
+        Anuluj i wróć do głównego panelu
+    </div>
+</div>
