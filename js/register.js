@@ -1,14 +1,12 @@
-function renderRegister() {
-    $("#subtitle-box").html("Rejestracja");
-    $("#content-box").append($.parseHTML(Mustache.render(registerTemplate, {})));
-
-    $("#toLoginPage").click(
-        function() {
-            renderClear();
-            renderLogin();
-        }
-    );
+function prepareRegister() {
     
+
+    if(GetParameterValues("usersth") === "contractor") {
+        $("#accountType").val("contractor");
+    } else {
+        $("#accountType").val("paymaster");
+    }
+
     // validate
     $("#registerForm").submit(function(e) { e.preventDefault(); }).validate({
         rules: {
@@ -50,7 +48,7 @@ function renderRegister() {
                 obj[item.name] = item.value;
                 return obj;
             }, {});
-            registerData.accountType = "contractor";
+            // registerData.accountType = "contractor";
             registerData.phoneNumber = "+48" + registerData.phoneNumber;
             registerData.address = { };
             registerData.address.addressLine = registerData.addressLine;
@@ -62,20 +60,23 @@ function renderRegister() {
             delete registerData.city;
             console.log(registerData);
 
-            $("#loginErrorBox").remove();
+            $("#errorBox").remove();
             $.ajax({
                 url: serverURL + "/api/Auth/Register",
                 type: "POST",
                 data: JSON.stringify(registerData),
                 contentType: "application/json",
                 success: function(data) {
-                    renderClear();
-                    renderLogin();
                     alert("Udało ci się zarejetrować! Użyj swoich danych aby się zalogować.");
+                    if(registerData.accountType === "contractor") {
+                        window.location.href = "contractorApp.html";
+                    } else {
+                        window.location.href = "paymasterApp.html";
+                    }
                 },
                 error: function(xhr, status, error) {
                     const msg = {
-                        id: "loginErrorBox",
+                        id: "errorBox",
                         errorMsg: null
                     }
                     const code = parseInt(xhr.status);

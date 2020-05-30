@@ -21,9 +21,6 @@ let dialogTemplate = null;
 const serverURL = "http://185.238.75.42:6010";
 
 // Get templates with get
-$.get('templates/register.mst', function(data) {
-    registerTemplate = data;
-});
 
 $.get('templates/entry.mst', function(data) {
     entryTemplate = data;
@@ -50,5 +47,6 @@ $.get('templates/dialog.mst', function(data) {
 });
 
 function renderClear() {
+    $("#content-box, #content-box *").unbind();
     $("#content-box").children().remove();
 }

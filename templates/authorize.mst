@@ -1,7 +1,6 @@
 <div>
     <div class="block back-button">
-        Wysłaliśmy na podany numer kod weryfikacyjny.
-        Wpisz go poniżej aby potwierdzić, że podany numer telefonu należy do Ciebie.
+        Wysłaliśmy na podany numer kod weryfikacyjny, wpisz go poniżej aby potwierdzić, że podany numer telefonu należy do Ciebie.
     </div>
     <div class="block">
         <form id="authorizeForm" style="display: flex; flex-direction: column;">
@@ -9,7 +8,7 @@
             <input id="authorizeButton" class="block" type="submit" value="Potwierdź numer"/>
         </form>
     </div>
-    <a href="landingPage.html">
+    <a href="index.html">
         <div class="block back-button">
             Powrót do strony głównej
         </div>

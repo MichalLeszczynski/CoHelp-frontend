@@ -1,20 +1,6 @@
 function renderLogin() {
     $("#subtitle-box").html("Logowanie");
     $("#content-box").append($.parseHTML(Mustache.render(loginTemplate, {})));
-
-    $("#registerLink").click(
-        function() {
-            renderClear();
-            renderRegister();
-        }
-    );
-
-    $("#remindLink").click(
-        function() {
-            renderClear();
-            renderRemindPassword();
-        }
-    );
     
     // validate
     $("#loginForm").submit(function(e) { e.preventDefault(); }).validate({

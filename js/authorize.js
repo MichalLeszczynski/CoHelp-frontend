@@ -36,11 +36,9 @@ function renderAuthorize() {
                         url: serverURL + "/api/Auth/Login" + "?" + jQuery.param(loginData),
                         type: "POST",
                         success: function(data) {
-                            user.accountType = data.accountType;
-                            user.authToken = data.authToken;
-                            user.userId = data.userId;
+                            alert("Pomyślnie potwierdzono twoją tożsamość, zaloguj się ponownie aby zacząć w pełni kożystać z serwisu! :-)");
                             renderClear();
-                            renderContractorPanel();
+                            renderLogin();
                         },
                         error: function(xhr, status, error) {
                             renderClear();

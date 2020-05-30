@@ -1,0 +1,74 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Aplikacja CoHelp</title>
+        <meta name="description" content="CoHelp APP"/>
+
+        <link href="https://fonts.googleapis.com/css?family=Manrope&display=swap" rel="stylesheet">
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <link rel="stylesheet" href="css/universal.css"/>
+        <link rel="stylesheet" href="css/panel.css"/>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.1.0/mustache.min.js"></script>
+        <script src="js/utils.js"></script>
+        <script src="js/register.js"></script>
+    </head>
+
+    <body onload="prepareRegister()">
+        <div id="app" class="main-wrapper">
+            <div class="top-box block">
+                <div id="title-box" class="title">
+                    Rejestracja
+                </div>
+            </div>
+            <div id="content-box" class="block">
+                <div class="block">
+                    <form id="registerForm" style="display: flex; flex-direction: column;">
+            
+                        <div class="block">
+                            <div class="block">Typ Konta</div>
+                            <div class="block">
+                                Jeżeli potrzebujesz pomocy z zakupami wybierz opcję <b>Zlecający</b>,
+                                jeżeli jednak to ty jesteś w dobrą duszą pomagającą innym wybierz opcję <b>Pomocnik</b>.
+                            </div>
+                            <select id="accountType" class="block" name="accountType">
+                                <option value="contractor">Pomocnik</option>
+                                <option value="paymaster">Zlecający</option>
+                            </select>
+                        </div>
+            
+                        <div class="block">Dane personalne</div>
+                        <div class="block">
+                            <input class="block" placeholder="Imię" type="text" name="name"/>
+                            <input class="block" placeholder="Nazwisko" type="text" name="surname"/>
+                        </div>
+                        <div class="block">Twój adres</div>
+                        <div class="block">
+                            <input class="block" placeholder="Miasto" type="text" name="city"/>
+                            <input class="block" placeholder="Adres" type="text" name="addressLine"/>
+                            <input class="block" placeholder="Kod pocztowy" type="text" name="postalCode"/>
+                        </div>
+                        <div class="block">Dane do logowania</div>
+                        <div class="block">                            
+                            <input class="block" placeholder="Numer telefonu" type="number" name="phoneNumber" maxlength="9"/>
+                            <input class="block" placeholder="Hasło" type="password" name="password" maxlength="64"/>
+                        </div>
+                        <input id="registerButton" class="block" type="submit" value="Zarejestruj">
+                    </form>
+                </div>
+                <a href="index.html">
+                    <div class="block back-button">
+                        Jednak nie chcę się rejestrować!
+                    </div>
+                </a>
+            </div>
+        </div>            
+    </body>
+</html>

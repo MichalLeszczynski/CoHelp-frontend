@@ -1,14 +1,4 @@
-function renderRemindPassword() {
-    $("#subtitle-box").html("Reset hasła");
-    $("#content-box").append($.parseHTML(Mustache.render(remindPasswordTemplate, {})));
-
-    $("#toLoginPage").click(
-        function() {
-            renderClear();
-            renderLogin();
-        }
-    );
-    
+function prepareResetPassword() {
     // validate
     $("#remindForm").submit(function(e) { e.preventDefault(); }).validate({
         rules: {
@@ -104,9 +94,8 @@ function renderRemindPassword() {
                 type: "POST",
                 contentType: "application/json",
                 success: function(data) {
-                    renderClear();
-                    renderLogin();
                     alert("Hasło zostało pomyślnie zresetowane! Do następnego logowania użyj nowego hasła.");
+                    window.location.href = "index.html";
                 },
                 error: function(xhr, status, error) {
                     const msg = {

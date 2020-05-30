@@ -1,7 +1,7 @@
 const panelData = {
     available: null,
-    finished: null,
     accepted: null,
+    finished: null,
     name: null,
     surname: null
 };
@@ -188,7 +188,7 @@ function renderContractorPanel() {
     panelData.city = user.address.city;
     panelData.addressLine = user.address.addressLine;
     panelData.postalCode = user.address.postalCode;
-    $("#subtitle-box").html("Panel pomocnika");
+    $("#subtitle-box").html("Panel główny");
 
     getOrderData();
 
@@ -201,22 +201,88 @@ function renderContractorPanel() {
         const id = "#panel-" + item.id;
         $(id).dialog({ autoOpen: false, width: 600, closeText: "Zamknij panel" });
     }
-
+    
     for(var item of panelData.finished) {
         const id = "#panel-" + item.id;
         $(id).dialog({ autoOpen: false, width: 600, closeText: "Zamknij panel" });
     }
-
+    
     for(var item of panelData.accepted) {
         const id = "#panel-" + item.id;
         $(id).dialog({ autoOpen: false, width: 600, closeText: "Zamknij panel" });
     }
+
+    if(panelData.available.length === 0) {
+        $("#available-list").html("Pusto tu...");
+    }
+
+    if(panelData.accepted.length === 0) {
+        $("#accepted-list").html("Pusto tu...");
+    }
+
+    if(panelData.finished.length === 0) {
+        $("#finished-list").html("Pusto tu...");
+    }
+
 
     // prepare buttons
     $(".entry-button").click(function() {
         const button = $(this);
         const id = "#panel-" + button.val();
         $(id).dialog("open");
+    });
+
+    
+    $(".accept-order-button").click(function() {
+        const button = $(this);
+        const queryData = {
+            orderId: button.val(),
+            userId: user.userId
+        };
+        $(".panel").dialog("close");
+        $.ajax({
+            url: serverURL + "/api/OrdersManagement/AcceptOrder" + "?" + jQuery.param(queryData),
+            type: "PUT",
+            contentType: "application/json",
+            success: function(data) {
+                alert("Zlecenie przyjęte pomyślnie!");
+                console.log(data);
+                renderClear();
+                renderContractorPanel();
+            },
+            error: function(xhr, status, error) {
+                const code = parseInt(xhr.status);
+                alert("Nie udało się przyjąć tego zlecenia z powodu błędu numer " + code);
+                renderClear();
+                renderContractorPanel();
+            }
+        });
+    });
+
+    $(".cancel-order-button").click(function() {
+        const button = $(this);
+        const queryData = {
+            orderId: button.val(),
+            userId: user.userId
+        };
+        $(".panel").dialog("close");
+        $.ajax({
+            url: serverURL + "/api/OrdersManagement/CancelOrder" + "?" + jQuery.param(queryData),
+            type: "PUT",
+            contentType: "application/json",
+            success: function(data) {
+                alert("Zlecenie zostało anulowane!");
+                console.log(data);
+                renderClear();
+                renderContractorPanel();
+            },
+            error: function(xhr, status, error) {
+                const code = parseInt(xhr.status);
+                alert("Nie udało się anulować tego zlecenia z powodu błędu numer " + code);
+                renderClear();
+                renderContractorPanel();
+            }
+        });
     });
 
 

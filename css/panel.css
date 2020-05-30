@@ -27,6 +27,21 @@
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
+.entry-button {
+    color: white;
+    background-color: green;
+}
+
+.accept-order-button {
+    color: white;
+    background-color: green;
+}
+
+.cancel-order-button {
+    color: white;
+    background-color: crimson;
+}
+
 .ui-dialog {
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }

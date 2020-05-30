@@ -23,7 +23,7 @@
         To są zlecenia które możesz przyjąć
     </div>
 
-    <div class="block">
+    <div id="available-list" class="block">
         <div style="display: flex; flex-direction: column;">
             <div class="entry-row">
                 <div class="entry title-entry">Adres</div><div class="entry title-entry">Data dostawy</div><div class="empty-entry"></div>
@@ -43,7 +43,7 @@
         To są twoje aktualne zlecenia
     </div>
 
-    <div class="block">
+    <div id="accepted-list" class="block">
         <div style="display: flex; flex-direction: column;">
             <div class="entry-row">
                 <div class="entry title-entry">Adres</div><div class="entry title-entry">Data dostawy</div><div class="empty-entry"></div>
@@ -63,7 +63,7 @@
         To są twoje już wykonane zlecenia
     </div>
 
-    <div class="block">
+    <div id="finished-list" class="block">
         <div style="display: flex; flex-direction: column;">
             <div class="entry-row">
                 <div class="entry title-entry">Adres</div><div class="entry title-entry">Data dostawy</div><div class="empty-entry"></div>
@@ -86,12 +86,8 @@
         </div>
     </a>
 
-    <div class="block text-bar">
-        <button id="opener">open the dialog</button>
-    </div>
-
     {{! Dailog boxes }}
-    <div id="changePasswordDailog" title="Zmiana hasła">
+    <div id="changePasswordDailog" class="panel" title="Zmiana hasła">
         <div class="block">
             <form id="changePasswordForm" style="display: flex; flex-direction: column;">
                 <input class="block" placeholder="Obecne hasło" type="password" name="currentPassword" maxlength="64"/>
@@ -101,7 +97,7 @@
         </div>
     </div>
 
-    <div id="changeAdressDailog" title="Zmiana adresu">
+    <div id="changeAdressDailog" class="panel" title="Zmiana adresu">
         <div class="block">
             <form id="changeAdressForm" style="display: flex; flex-direction: column;">
                 <input class="block" placeholder="Miasto"             type="text" name="city"/>
@@ -114,7 +110,7 @@
 
     {{! Order panels }}
     {{#available}}
-    <div id="panel-{{id}}" title="Dostępne">
+    <div id="panel-{{id}}" class="panel" title="Dostępne">
         <div class="block">
             <div class="entry">Identyfikator: {{id}}</div>
 
@@ -141,7 +137,41 @@
             </div>
 
             <div class="entry">Status: {{status}}</div>
+            <button class="entry accept-order-button" value="{{ id }}">Przyjmij to zlecenie</button>
         </div>
     </div>
     {{/available}}
+    
+    {{#accepted}}
+    <div id="panel-{{id}}" class="panel" title="Dostępne">
+        <div class="block">
+            <div class="entry">Identyfikator: {{id}}</div>
+
+            <div class="entry">Adres: {{address.city}} {{address.postalCode}} {{address.addressLine}}</div>
+
+            <div class="block">
+                <iframe width="520" height="300"
+                src="https://maps.google.com/maps?q={{location.latitude}}%20{{location.longitude}}&t=&z=17&ie=UTF8&iwloc=&output=embed" 
+                frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                </iframe>
+            </div>
+
+            <div class="entry">Preferowany sklep: {{prefferedStore}}</div>
+            <div class="entry">Data dostarczenia: {{deliveryDate}}</div>
+
+            <div class="entry">Cena: {{cashAmount}}</div>
+
+            <div class="entry">
+                <ul>
+                    {{#products}}
+                        <li>{{name}} w ilości {{amount}}</li>
+                    {{/products}}
+                </ul>
+            </div>
+
+            <div class="entry">Status: {{status}}</div>
+            <button class="entry cancel-order-button" value="{{ id }}">Anuluj to zlecenie</button>
+        </div>
+    </div>
+    {{/accepted}}
 </div>
