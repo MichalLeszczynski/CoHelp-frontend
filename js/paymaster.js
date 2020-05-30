@@ -1,50 +1,44 @@
-function getContractorOrders() {
-
+function getPaymasterOrders() {
+    panelData.available = [];
+    panelData.accepted = [];
+    panelData.finished = [];
     $.ajax({
         async: false,
-        url: serverURL + "/api/Orders/ContractorAcceptedOrdersHistory" + "?userId=" + user.userId,
-        type: "GET",
-        headers: { Authorization: "Bearer " + user.authToken },
-        success: function(data) {
-            panelData.accepted = remapProducts(data);
-        }
-    });
-    
-    $.ajax({
-        async: false,
-        url: serverURL + "/api/Orders/ContractorFinishedOrdersHistory" + "?userId=" + user.userId,
-        type: "GET",
-        headers: { Authorization: "Bearer " + user.authToken },
-        success: function(data) {
-            panelData.finished = remapProducts(data);
-        }
-    });
-    
-    $.ajax({
-        async: false,
-        url: serverURL + "/api/Orders/ContractorAvailableOrdersHistory" + "?userId=" + user.userId,
+        url: serverURL + "/api/Orders/PaymasterOrdersHistory" + "?userId=" + user.userId,
         type: "GET",
         headers: { Authorization: "Bearer " + user.authToken },
         success: function(data) {
             console.log(data);
-            panelData.available = remapProducts(data);
+            const orders = remapProducts(data);
+            for(const item of orders) {
+                if(item.status.toLowerCase() == "open") {
+                    panelData.available.push(item);
+                } 
+                else if(item.status.toLowerCase() == "closed"){
+                    panelData.finished.push(item);
+                }
+                else {
+                    panelData.accepted.push(item);
+                }
+            }
         }
     });
+    
     console.log(panelData);
 }
 
-function renderContractorPanel() {
+function renderPaymasterPanel() {
     console.log(user);
     panelData.name = user.name;
     panelData.surname = user.surname;
     panelData.city = user.city;
     panelData.addressLine = user.addressLine;
     panelData.postalCode = user.postalCode;
-    $("#title-box").html("Panel pomocnika");
+    $("#title-box").html("Panel zlecającego");
 
-    getContractorOrders();
+    getPaymasterOrders();
 
-    $("#content-box").append($.parseHTML(Mustache.render(contractorTemplate, panelData)));
+    $("#content-box").append($.parseHTML(Mustache.render(paymasterTemplate, panelData)));
 
     perpareForms();
     
@@ -85,7 +79,7 @@ function renderContractorPanel() {
     });
 
     
-    $(".accept-order-button").click(function() {
+    $(".new-order-button").click(function() {
         const button = $(this);
         const queryData = {
             orderId: button.val(),

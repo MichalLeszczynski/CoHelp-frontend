@@ -1,4 +1,13 @@
+const panelData = {
+    available: null,
+    accepted: null,
+    finished: null,
+    name: null,
+    surname: null
+};
+
 let contractorTemplate = null;
+let paymasterTemplate = null;
 let entryTemplate = null;
 let dialogTemplate = null;
 
@@ -19,6 +28,14 @@ function prepareApp() {
         async: false,
         success: function (data) {
             contractorTemplate = data;
+        }
+    });
+
+    $.ajax({
+        url: 'templates/paymaster.mst',
+        async: false,
+        success: function (data) {
+            paymasterTemplate = data;
         }
     });
 
@@ -51,7 +68,7 @@ function prepareApp() {
     if (user.accountType === "contractor") {
         renderContractorPanel();
     } else if (user.accountType === "paymaster") {
-        alert("Jesteś zlecającym!");
+        renderPaymasterPanel();
     } else {
         alert("Twoja sesja wygasła, zaloguj się ponownie.");
         window.location.href = "login.html";
