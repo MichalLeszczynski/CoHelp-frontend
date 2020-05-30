@@ -95,7 +95,7 @@ function prepareResetPassword() {
                 contentType: "application/json",
                 success: function(data) {
                     alert("Hasło zostało pomyślnie zresetowane! Do następnego logowania użyj nowego hasła.");
-                    window.location.href = "index.html";
+                    window.location.href = "login.html";
                 },
                 error: function(xhr, status, error) {
                     const msg = {

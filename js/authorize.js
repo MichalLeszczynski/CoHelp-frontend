@@ -1,5 +1,5 @@
 function renderAuthorize() {
-    $("#subtitle-box").html("Autoryzacja");
+    $("#title-box").html("Autoryzacja");
     $("#content-box").append($.parseHTML(Mustache.render(authorizeTemplate, {})));
 
     // validate

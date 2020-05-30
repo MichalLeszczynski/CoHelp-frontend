@@ -11,7 +11,7 @@
             <input id="loginButton" class="block" type="submit" value="Zaloguj"/>
         </form>
     </div>
-    <a href="passwordReset.html">
+    <a href="resetPassword.html">
         <div class="block back-button">
             Nie pamiętam hasła do mojego konta
         </div>

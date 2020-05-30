@@ -79,13 +79,6 @@
         </div>
     </div>
 
-
-    <a href="index.html">
-        <div class="block back-button">
-            Tyle na dziś, wyloguj mnie!
-        </div>
-    </a>
-
     {{! Dailog boxes }}
     <div id="changePasswordDailog" class="panel" title="Zmiana hasła">
         <div class="block">

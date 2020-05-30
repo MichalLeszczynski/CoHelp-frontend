@@ -1,6 +1,5 @@
 function prepareRegister() {
     
-
     if(GetParameterValues("usersth") === "contractor") {
         $("#accountType").val("contractor");
     } else {
@@ -68,11 +67,7 @@ function prepareRegister() {
                 contentType: "application/json",
                 success: function(data) {
                     alert("Udało ci się zarejetrować! Użyj swoich danych aby się zalogować.");
-                    if(registerData.accountType === "contractor") {
-                        window.location.href = "contractorApp.html";
-                    } else {
-                        window.location.href = "paymasterApp.html";
-                    }
+                    window.location.href = "login.html";
                 },
                 error: function(xhr, status, error) {
                     const msg = {

@@ -1,6 +1,25 @@
+const user = {
+    accountType: null,
+    authToken: null,
+    userId: null,
+    phoneNumber: null,
+    password: null,
+    adress: null,
+    name: null,
+    surname: null
+}
+
+// templates
+let loginTemplate = null;
+let authorizeTemplate = null;
+
+$.get('templates/authorize.mst', function(data) {
+    authorizeTemplate = data;
+});
+
 function renderLogin() {
-    $("#subtitle-box").html("Logowanie");
     $("#content-box").append($.parseHTML(Mustache.render(loginTemplate, {})));
+    $("#title-box").html("Strona Logowania");
     
     // validate
     $("#loginForm").submit(function(e) { e.preventDefault(); }).validate({
@@ -42,15 +61,17 @@ function renderLogin() {
                 url: serverURL + "/api/Auth/Login" + "?" + jQuery.param(loginData),
                 type: "POST",
                 success: function(data) {
-                    user.accountType = data.accountType;
-                    user.authToken = data.authToken;
-                    user.userId = data.userId;
-                    user.address = data.address;
-                    user.name = data.name;
-                    user.surname = data.surname;
+                    // Set session data
+                    sessionStorage.setItem('accountType', data.accountType.toLowerCase());
+                    sessionStorage.setItem('authToken', data.authToken);
+                    sessionStorage.setItem('userId', data.userId);
+                    sessionStorage.setItem('name', data.name);
+                    sessionStorage.setItem('surname', data.surname);
+                    sessionStorage.setItem('addressLine', data.address.addressLine);
+                    sessionStorage.setItem('city', data.address.city);
+                    sessionStorage.setItem('postalCode', data.address.postalCode);
                     console.log(data);
-                    renderClear();
-                    renderContractorPanel();
+                    window.location.href = "app.html";
                 },
                 error: function(xhr, status, error) {
                     const msg = {

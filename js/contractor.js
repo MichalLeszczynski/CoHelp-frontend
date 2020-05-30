@@ -185,14 +185,15 @@ function renderContractorPanel() {
     console.log(user);
     panelData.name = user.name;
     panelData.surname = user.surname;
-    panelData.city = user.address.city;
-    panelData.addressLine = user.address.addressLine;
-    panelData.postalCode = user.address.postalCode;
+    panelData.city = user.city;
+    panelData.addressLine = user.addressLine;
+    panelData.postalCode = user.postalCode;
+    $("#title-box").html("Panel pomocnika");
     $("#subtitle-box").html("Panel główny");
 
     getOrderData();
 
-    $("#content-box").append($.parseHTML(Mustache.render(mainPanelTemplate, panelData)));
+    $("#content-box").append($.parseHTML(Mustache.render(contractorTemplate, panelData)));
 
     perpareForms();
     
