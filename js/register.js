@@ -75,7 +75,7 @@ function prepareRegister() {
                     }
                     const code = parseInt(xhr.status);
                     if(code == 404) {
-                        msg.errorMsg = "Nie udało znaleść podanego adresu!";
+                        msg.errorMsg = "Nie udało się znaleść podanego adresu!";
                     } else if(code == 403) {
                         msg.errorMsg = "Użytkownik o podanym numerze telefonu już istnieje!";
                     } else {
