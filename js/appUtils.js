@@ -112,9 +112,9 @@ function perpareForms() {
                 data: JSON.stringify(formData),
                 contentType: "application/json",
                 success: function (data) {
-                    user.city = formData.city;
-                    user.addressLine = formData.addressLine;
-                    user.postalCode = formData.postalCode;
+                    sessionStorage.setItem('addressLine', formData.addressLine);
+                    sessionStorage.setItem('city', formData.city);
+                    sessionStorage.setItem('postalCode', formData.postalCode);
                     $("#changeAdressDailog").dialog("close");
                     window.location.href = "app.html";
                 },

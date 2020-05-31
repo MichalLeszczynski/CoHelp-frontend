@@ -1,4 +1,4 @@
-const serverURL = "http://185.238.75.42:6010";
+const serverURL = "http://185.238.75.42:16010";
 
 function GetParameterValues(param) {
     var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');

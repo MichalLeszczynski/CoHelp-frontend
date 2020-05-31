@@ -143,8 +143,4 @@ function renderContractorPanel() {
     $("#changeAdressButton").click(function() {
         $("#changeAdressDailog").dialog("open");
     });
-
-    $("#opener").click(function() {
-        $("#dialog").dialog("open");
-    });
 }

@@ -27,6 +27,130 @@ function getPaymasterOrders() {
     console.log(panelData);
 }
 
+function prepareNewOrderForm() {
+    // adress change
+    $("#newOrderForm").submit(function (e) { e.preventDefault(); }).validate({
+        rules: {
+            city: {
+                required: true,
+            },
+            addressLine: {
+                required: true,
+            },
+            postalCode: {
+                required: true,
+            },
+            deliveryDate: {
+                required: true,
+            },
+            prefferedStore: {
+                required: false,
+            }
+        },
+        // Specify validation error messages
+        messages: {
+            city: {
+                required: "Wpisz nazwę miasta",
+            },
+            addressLine: {
+                required: "Wpisz nazwę ulicy oraz numer mieszkania",
+            },
+            postalCode: {
+                required: "Wpisz swój kod pocztowy",
+            },
+            deliveryDate: {
+                required: "Wpisz preferowaną datę dostawy",
+            }
+        },
+        submitHandler: function (form) {
+            formData = $("#newOrderForm").serializeArray().reduce(function (obj, item) {
+                obj[item.name] = item.value;
+                return obj;
+            }, {});
+
+            formData.address = { };
+            formData.address.addressLine = formData.addressLine;
+            formData.address.postalCode = formData.postalCode;
+            formData.address.city = formData.city;
+            delete formData.addressLine;
+            delete formData.postalCode;
+            delete formData.city;
+            
+            formData.products = {
+                kasza: "12 x 500 g",
+                mleko: "20l",
+                makaron: "23.5 kg"
+            };
+            
+            console.log(formData);
+            $("#errorBox").remove();
+            $.ajax({
+                url: serverURL + "/api/Orders/NewOrder" + "?" + jQuery.param({userId: user.userId}),
+                type: "POST",
+                data: JSON.stringify(formData),
+                contentType: "application/json",
+                success: function (data) {
+                    $("#newOrderDailog").dialog("close");
+                    console.log(data);
+                    alert("Pomyślnie utworzono nowe zlecenie!");
+                    window.location.href = "app.html";
+                },
+                error: function (xhr, status, error) {
+                    const msg = {
+                        id: "errorBox",
+                        errorMsg: null
+                    };
+                    const code = parseInt(xhr.status);
+                    if (code == 404) {
+                        msg.errorMsg = "Nie znaleziono podanego adresu!";
+                    } else {
+                        msg.errorMsg = "Nieznany błąd: " + code + " : " + xhr.responseText;
+                    }
+                    $("#newOrderForm").prepend($.parseHTML(Mustache.render(errorTemplate, msg)));
+                }
+            });
+        }
+    });
+}
+
+const productArray = [];
+
+function renderInputs() {
+    const inputs = $(".inputs");
+    inputs.children().remove();
+    productArray.forEach(function(item, index) {
+        const str = `
+            <div class="entry">
+                <div class="field block" style="background-color: {{color}}"></div>
+                <div class="input-box">
+                    <input class="field block input-label" type="text" placeholder="label" value="{{value}}" id="{{id}}"/>
+                    <button class="field block" onclick="deleteInput({{id}})" type="button">Delete box</button>
+                </div>
+            </div>
+        `;
+        const element = $.parseHTML(Mustache.render(str, {color: item.color, id: index, value: item.label}));
+        inputs.append(element);
+    });
+
+    $(".input-label").change(function() {
+        labelsArr = [];
+        $(".input-label").each(function() {
+            labelsArr.push($(this).val());
+        });
+
+        for(let i = 0; i < productArray.length; i++) {
+            productArray[i].label = labelsArr[i];
+        }
+    });
+}
+
+function deleteInput(id) {
+    console.log(id);
+    productArray.splice(id, 1);
+    renderInputs();
+    updateCanvas();
+}
+
 function renderPaymasterPanel() {
     console.log(user);
     panelData.name = user.name;
@@ -41,6 +165,7 @@ function renderPaymasterPanel() {
     $("#content-box").append($.parseHTML(Mustache.render(paymasterTemplate, panelData)));
 
     perpareForms();
+    prepareNewOrderForm();
     
     // initialize panels
     for(var item of panelData.available) {
@@ -138,7 +263,8 @@ function renderPaymasterPanel() {
         $("#changeAdressDailog").dialog("open");
     });
 
-    $("#opener").click(function() {
-        $("#dialog").dialog("open");
+    $("#newOrderDailog").dialog({ autoOpen: false, width: 600, closeText: "Zamknij panel" });
+    $("#newOrderButton").click(function() {
+        $("#newOrderDailog").dialog("open");
     });
 }

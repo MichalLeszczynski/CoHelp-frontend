@@ -53,7 +53,6 @@ function prepareRegister() {
             registerData.address.addressLine = registerData.addressLine;
             registerData.address.postalCode = registerData.postalCode;
             registerData.address.city = registerData.city;
-            registerData.address.city = registerData.city;
             delete registerData.addressLine;
             delete registerData.postalCode;
             delete registerData.city;

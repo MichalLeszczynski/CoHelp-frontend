@@ -1,7 +1,7 @@
 .register-button {
-    font-size: 3vw;
+    font-size: 48px;
     text-align: center;
-    padding: 4vw;
+    padding: 72px;
     background-color: var(--secondary-dark);
     color: lightgray;
     text-shadow: 1px 1px gray;

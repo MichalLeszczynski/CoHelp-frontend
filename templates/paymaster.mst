@@ -4,6 +4,14 @@
         Co będziemy dzisiaj robić?
     </div>
 
+    <div id="changePasswordButton" class="block back-button">
+        Zmień hasło
+    </div>
+
+    <div id="changeAdressButton" class="block back-button">
+        Zmień dane adresowe
+    </div>
+
     <div class="block">
         Twoje dane:<br>
         Miasto: <b>{{city}}</b><br>
@@ -11,12 +19,9 @@
         Kod pocztowy: <b>{{postalCode}}</b><br>
     </div>
     
-    <div id="changePasswordButton" class="block back-button">
-        Zmień hasło
-    </div>
 
-    <div id="changeAdressButton" class="block back-button">
-        Zmień dane adresowe
+    <div id="newOrderButton" class="block back-button">
+        Czas na nowe zlecenie!
     </div>
 
     <div class="block text-bar">
@@ -33,7 +38,7 @@
             <div class="entry-row">
                 <div class="entry">{{address.addressLine}}</div>
                 <div class="entry">{{deliveryDate}}</div>
-                <button class="entry entry-button" value="{{ id }}">Zobacz</button>
+                <button class="entry entry-button" value="{{id}}">Zobacz</button>
             </div>
             {{/available}}
         </div>
@@ -53,7 +58,7 @@
             <div class="entry-row">
                 <div class="entry">{{address.addressLine}}</div>
                 <div class="entry">{{deliveryDate}}</div>
-                <button class="entry entry-button" value="{{ id }}">Zobacz</button>
+                <button class="entry entry-button" value="{{id}}">Zobacz</button>
             </div>
             {{/accepted}}
         </div>
@@ -73,14 +78,10 @@
             <div class="entry-row">
                 <div class="entry">{{address.addressLine}}</div>
                 <div class="entry">{{deliveryDate}}</div>
-                <button class="entry entry-button" value="{{ id }}">Zobacz</button>
+                <button class="entry entry-button" value="{{id}}">Zobacz</button>
             </div>
             {{/finished}}
         </div>
-    </div>
-
-    <div class="block text-bar">
-    
     </div>
 
     {{! Dailog boxes }}
@@ -105,9 +106,31 @@
         </div>
     </div>
 
+    <div id="newOrderDailog" class="panel" title="Nowe zamówienie">
+        <div class="block">
+            <form id="newOrderForm" style="display: flex; flex-direction: column;">
+                <div class="block">
+                    <input class="block" placeholder="Miasto"             type="text" name="city"/>
+                    <input class="block" placeholder="Ulica i numer domu" type="text" name="addressLine"/>
+                    <input class="block" placeholder="Kod pocztowy"       type="text" name="postalCode"/>
+                </div>
+
+                <div class="block">
+                    Lista z produktami
+                </div>
+
+                <div class="block">
+                    <input class="block" type="datetime-local" placeholder="Data dostawy" name="deliveryDate"/>
+                    <input class="block" placeholder="Preferowany sklep" type="text" name="prefferedStore"/>
+                </div>
+                <input class="block" type="submit" value="Wyślij nowe zamówienie">
+            </form>
+        </div>
+    </div>
+
     {{! Order panels }}
     {{#available}}
-    <div id="panel-{{id}}" class="panel" title="Dostępne">
+    <div id="panel-{{id}}" class="panel" title="Jeszcze nie przyjęte">
         <div class="block">
             <div class="entry">Identyfikator: {{id}}</div>
 
@@ -134,13 +157,13 @@
             </div>
 
             <div class="entry">Status: {{status}}</div>
-            <button class="entry cancel-order-button" value="{{ id }}">Anuluj to zlecenie</button>
+            <button class="entry cancel-order-button" value="{{id}}">Anuluj to zlecenie</button>
         </div>
     </div>
     {{/available}}
     
     {{#accepted}}
-    <div id="panel-{{id}}" class="panel" title="Dostępne">
+    <div id="panel-{{id}}" class="panel" title="Obecnie w realizacji">
         <div class="block">
             <div class="entry">Identyfikator: {{id}}</div>
 
@@ -170,4 +193,36 @@
         </div>
     </div>
     {{/accepted}}
+
+    {{#finished}}
+    <div id="panel-{{id}}" class="panel" title="Historyczne">
+        <div class="block">
+            <div class="entry">Identyfikator: {{id}}</div>
+
+            <div class="entry">Adres: {{address.city}} {{address.postalCode}} {{address.addressLine}}</div>
+
+            <div class="block">
+                <iframe width="520" height="300"
+                src="https://maps.google.com/maps?q={{location.latitude}}%20{{location.longitude}}&t=&z=17&ie=UTF8&iwloc=&output=embed" 
+                frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                </iframe>
+            </div>
+
+            <div class="entry">Preferowany sklep: {{prefferedStore}}</div>
+            <div class="entry">Data dostarczenia: {{deliveryDate}}</div>
+
+            <div class="entry">Cena: {{cashAmount}}</div>
+
+            <div class="entry">
+                <ul>
+                    {{#products}}
+                        <li>{{name}} w ilości {{amount}}</li>
+                    {{/products}}
+                </ul>
+            </div>
+
+            <div class="entry">Status: {{status}}</div>
+        </div>
+    </div>
+    {{/finished}}
 </div>

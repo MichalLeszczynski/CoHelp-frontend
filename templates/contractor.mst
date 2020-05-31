@@ -4,13 +4,6 @@
         Co będziemy dzisiaj robić?
     </div>
 
-    <div class="block">
-        Twoje dane:<br>
-        Miasto: <b>{{city}}</b><br>
-        Ulica i numer domu: <b>{{addressLine}}</b><br>
-        Kod pocztowy: <b>{{postalCode}}</b><br>
-    </div>
-    
     <div id="changePasswordButton" class="block back-button">
         Zmień hasło
     </div>
@@ -18,6 +11,14 @@
     <div id="changeAdressButton" class="block back-button">
         Zmień dane adresowe
     </div>
+    
+    <div class="block">
+        Twoje dane:<br>
+        Miasto: <b>{{city}}</b><br>
+        Ulica i numer domu: <b>{{addressLine}}</b><br>
+        Kod pocztowy: <b>{{postalCode}}</b><br>
+    </div>
+    
 
     <div class="block text-bar">
         To są zlecenia które możesz przyjąć
