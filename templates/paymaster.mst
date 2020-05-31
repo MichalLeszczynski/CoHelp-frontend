@@ -146,9 +146,17 @@
     {{#available}}
     <div id="panel-{{id}}" class="panel" title="Jeszcze nie przyjęte">
         <div class="block">
-            <div class="entry">Identyfikator: {{id}}</div>
+            <div class="entry">
+                <div class="block"><b>Numer zamówienia</b></div>
+                <div class="block">{{id}}</div>
+            </div>
 
-            <div class="entry">Adres: {{address.city}} {{address.postalCode}} {{address.addressLine}}</div>
+            <div class="entry">
+                <div class="block"><b>Adres dostawy</b></div>
+                <div class="block">{{address.city}}</div>
+                <div class="block">{{address.addressLine}}</div>
+                <div class="block">{{address.postalCode}}</div>
+            </div>
 
             <div class="block">
                 <iframe width="520" height="300"
@@ -157,14 +165,15 @@
                 </iframe>
             </div>
 
-            <div class="entry">Preferowany sklep: {{prefferedStore}}</div>
-            <div class="entry">Data dostarczenia: {{deliveryDate}}</div>
-
-            <div class="entry">Cena: {{cashAmount}}</div>
+            <div class="entry">
+                <div class="block"><b>Wyznaczony czas dostawy</b></div>
+                <div class="block">{{dDate}}</div>
+                <div class="block">{{dTime}}</div>
+            </div>
 
             <div class="entry">
-                <div class="block">Lista zakupów</div>
-                <div class="block">
+                <div class="entry" style="font-size: 42px;">Lista zakupów</div>
+                <div class="entry">
                     <ul>
                         {{#products}}
                             <li><b>{{name}}</b> w ilości <b>{{amount}}</b></li>
@@ -173,7 +182,11 @@
                 </div>
             </div>
 
-            <div class="entry">Status: {{status}}</div>
+            <div class="entry">
+                <div class="block"><b>Preferowany sklep</b></div>
+                <div class="block">{{prefferedStore}}</div>
+            </div>
+            
             <button class="entry cancel-order-button" value="{{id}}">Anuluj to zlecenie</button>
         </div>
     </div>
@@ -182,9 +195,17 @@
     {{#accepted}}
     <div id="panel-{{id}}" class="panel" title="Obecnie w realizacji">
         <div class="block">
-            <div class="entry">Identyfikator: {{id}}</div>
+            <div class="entry">
+                <div class="block"><b>Numer zamówienia</b></div>
+                <div class="block">{{id}}</div>
+            </div>
 
-            <div class="entry">Adres: {{address.city}} {{address.postalCode}} {{address.addressLine}}</div>
+            <div class="entry">
+                <div class="block"><b>Adres dostawy</b></div>
+                <div class="block">{{address.city}}</div>
+                <div class="block">{{address.addressLine}}</div>
+                <div class="block">{{address.postalCode}}</div>
+            </div>
 
             <div class="block">
                 <iframe width="520" height="300"
@@ -193,14 +214,20 @@
                 </iframe>
             </div>
 
-            <div class="entry">Preferowany sklep: {{prefferedStore}}</div>
-            <div class="entry">Data dostarczenia: {{deliveryDate}}</div>
-
-            <div class="entry">Cena: {{cashAmount}}</div>
+            <div class="entry">
+                <div class="block"><b>Wyznaczony czas dostawy</b></div>
+                <div class="block">{{dDate}}</div>
+                <div class="block">{{dTime}}</div>
+            </div>
 
             <div class="entry">
-                <div class="block">Lista zakupów</div>
-                <div class="block">
+                <div class="block"><b>Wyznaczona cena w PLN</b></div>
+                <div class="block">{{cashAmount}}</div>
+            </div>
+
+            <div class="entry">
+                <div class="entry" style="font-size: 42px;">Lista zakupów</div>
+                <div class="entry">
                     <ul>
                         {{#products}}
                             <li><b>{{name}}</b> w ilości <b>{{amount}}</b></li>
@@ -209,7 +236,10 @@
                 </div>
             </div>
 
-            <div class="entry">Status: {{status}}</div>
+            <div class="entry">
+                <div class="block"><b>Preferowany sklep</b></div>
+                <div class="block">{{prefferedStore}}</div>
+            </div>
         </div>
     </div>
     {{/accepted}}
@@ -217,9 +247,17 @@
     {{#finished}}
     <div id="panel-{{id}}" class="panel" title="Historyczne">
         <div class="block">
-            <div class="entry">Identyfikator: {{id}}</div>
+            <div class="entry">
+                <div class="block"><b>Numer zamówienia</b></div>
+                <div class="block">{{id}}</div>
+            </div>
 
-            <div class="entry">Adres: {{address.city}} {{address.postalCode}} {{address.addressLine}}</div>
+            <div class="entry">
+                <div class="block"><b>Adres dostawy</b></div>
+                <div class="block">{{address.city}}</div>
+                <div class="block">{{address.addressLine}}</div>
+                <div class="block">{{address.postalCode}}</div>
+            </div>
 
             <div class="block">
                 <iframe width="520" height="300"
@@ -228,14 +266,20 @@
                 </iframe>
             </div>
 
-            <div class="entry">Preferowany sklep: {{prefferedStore}}</div>
-            <div class="entry">Data dostarczenia: {{deliveryDate}}</div>
-
-            <div class="entry">Cena: {{cashAmount}}</div>
+            <div class="entry">
+                <div class="block"><b>Wyznaczony czas dostawy</b></div>
+                <div class="block">{{dDate}}</div>
+                <div class="block">{{dTime}}</div>
+            </div>
 
             <div class="entry">
-                <div class="block">Lista zakupów</div>
-                <div class="block">
+                <div class="block"><b>Wyznaczona cena w PLN</b></div>
+                <div class="block">{{cashAmount}}</div>
+            </div>
+
+            <div class="entry">
+                <div class="entry" style="font-size: 42px;">Lista zakupów</div>
+                <div class="entry">
                     <ul>
                         {{#products}}
                             <li><b>{{name}}</b> w ilości <b>{{amount}}</b></li>
@@ -244,7 +288,10 @@
                 </div>
             </div>
 
-            <div class="entry">Status: {{status}}</div>
+            <div class="entry">
+                <div class="block"><b>Preferowany sklep</b></div>
+                <div class="block">{{prefferedStore}}</div>
+            </div>
         </div>
     </div>
     {{/finished}}
