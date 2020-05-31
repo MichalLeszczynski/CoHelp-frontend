@@ -109,6 +109,11 @@
     <div id="newOrderDailog" class="panel" title="Nowe zamówienie">
         <div class="block">
             <form id="newOrderForm" style="display: flex; flex-direction: column;">
+
+                <div class="block">
+                    Miejsce dostawy
+                </div>
+
                 <div class="block">
                     <input class="block" placeholder="Miasto"             type="text" name="city"/>
                     <input class="block" placeholder="Ulica i numer domu" type="text" name="addressLine"/>
@@ -120,10 +125,19 @@
                 </div>
 
                 <div class="block">
-                    <input class="block" type="datetime-local" placeholder="Data dostawy" name="deliveryDate"/>
                     <input class="block" placeholder="Preferowany sklep" type="text" name="prefferedStore"/>
                 </div>
-                <input class="block" type="submit" value="Wyślij nowe zamówienie">
+
+                <div class="block">
+                    Data i czas dostawy
+                </div>
+
+                <div class="block">
+                    <input class="block" type="date" placeholder="Data dostawy" name="dDate"/>
+                    <input class="block" type="time" placeholder="Czas dostawy" name="dTime"/>
+                </div>
+
+                <input class="block" type="submit" value="Wyślij nowe zamówienie"/>
             </form>
         </div>
     </div>
