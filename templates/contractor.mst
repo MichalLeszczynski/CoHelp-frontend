@@ -33,7 +33,7 @@
             {{#available}}
             <div class="entry-row">
                 <div class="entry">{{address.addressLine}}</div>
-                <div class="entry">{{deliveryDate}}</div>
+                <div class="entry">{{dDate}}</div>
                 <button class="entry entry-button" value="{{ id }}">Zobacz</button>
             </div>
             {{/available}}
@@ -53,7 +53,7 @@
             {{#accepted}}
             <div class="entry-row">
                 <div class="entry">{{address.addressLine}}</div>
-                <div class="entry">{{deliveryDate}}</div>
+                <div class="entry">{{dDate}}</div>
                 <button class="entry entry-button" value="{{ id }}">Zobacz</button>
             </div>
             {{/accepted}}
@@ -73,7 +73,7 @@
             {{#finished}}
             <div class="entry-row">
                 <div class="entry">{{address.addressLine}}</div>
-                <div class="entry">{{deliveryDate}}</div>
+                <div class="entry">{{dDate}}</div>
                 <button class="entry entry-button" value="{{ id }}">Zobacz</button>
             </div>
             {{/finished}}
@@ -118,26 +118,71 @@
             </div>
 
             <div class="entry">Preferowany sklep: {{prefferedStore}}</div>
-            <div class="entry">Data dostarczenia: {{deliveryDate}}</div>
-
-            <div class="entry">Cena: {{cashAmount}}</div>
-
             <div class="entry">
-                <ul>
-                    {{#products}}
-                        <li>{{name}} w ilości {{amount}}</li>
-                    {{/products}}
-                </ul>
+                <div class="block">Wyznaczony czas dostawy</div>
+                <div class="block">{{dDate}}</div>
+                <div class="block">{{dTime}}</div>
             </div>
 
-            <div class="entry">Status: {{status}}</div>
+            <div class="entry">
+                <div class="block">Lista zakupów</div>
+                <div class="block">
+                    <ul>
+                        {{#products}}
+                            <li><b>{{name}}</b> w ilości <b>{{amount}}</b></li>
+                        {{/products}}
+                    </ul>
+                </div>
+            </div>
             <button class="entry accept-order-button" value="{{ id }}">Przyjmij to zlecenie</button>
         </div>
     </div>
     {{/available}}
     
     {{#accepted}}
-    <div id="panel-{{id}}" class="panel" title="Dostępne">
+    <div id="panel-{{id}}" class="panel" title="Obecnie w realizacji">
+        <div class="block">
+            <div class="entry">Identyfikator: {{id}}</div>
+
+            <div class="entry">Adres: {{address.city}} {{address.postalCode}} {{address.addressLine}}</div>
+
+            <div class="block">
+                <iframe width="520" height="300"
+                src="https://maps.google.com/maps?q={{location.latitude}}%20{{location.longitude}}&t=&z=17&ie=UTF8&iwloc=&output=embed" 
+                frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                </iframe>
+            </div>
+
+            <div class="entry">Preferowany sklep: {{prefferedStore}}</div>
+            <div class="entry">
+                <div class="block">Wyznaczony czas dostawy</div>
+                <div class="block">{{dDate}}</div>
+                <div class="block">{{dTime}}</div>
+            </div>
+
+            <div class="entry">
+                <div class="block">Obecna cena</div>
+                <input id="cash-amount-input-{{ id }}" class="block" type="number" min="0.00" max="2000.00" step="0.01" value="{{cashAmount}}"/>
+                <button class="block cash-amount-button" value="{{ id }}">Ustaw nową cenę</button>
+            </div>
+
+            <div class="entry">
+                <div class="block">Lista zakupów</div>
+                <div class="block">
+                    <ul>
+                        {{#products}}
+                            <li><b>{{name}}</b> w ilości <b>{{amount}}</b></li>
+                        {{/products}}
+                    </ul>
+                </div>
+            </div>
+            <button class="entry cancel-order-button" value="{{ id }}">Anuluj to zlecenie</button>
+        </div>
+    </div>
+    {{/accepted}}
+
+    {{#finished}}
+    <div id="panel-{{id}}" class="panel" title="Historyczne">
         <div class="block">
             <div class="entry">Identyfikator: {{id}}</div>
 
@@ -156,16 +201,18 @@
             <div class="entry">Cena: {{cashAmount}}</div>
 
             <div class="entry">
-                <ul>
-                    {{#products}}
-                        <li>{{name}} w ilości {{amount}}</li>
-                    {{/products}}
-                </ul>
+                <div class="block">Lista zakupów</div>
+                <div class="block">
+                    <ul>
+                        {{#products}}
+                            <li><b>{{name}}</b> w ilości <b>{{amount}}</b></li>
+                        {{/products}}
+                    </ul>
+                </div>
             </div>
 
             <div class="entry">Status: {{status}}</div>
-            <button class="entry cancel-order-button" value="{{ id }}">Anuluj to zlecenie</button>
         </div>
     </div>
-    {{/accepted}}
+    {{/finished}}
 </div>

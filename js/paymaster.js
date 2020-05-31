@@ -96,32 +96,32 @@ function prepareNewOrderForm() {
             };
             
             console.log(formData);
-            // $("#errorBox").remove();
-            // $.ajax({
-            //     url: serverURL + "/api/Orders/NewOrder" + "?" + jQuery.param({userId: user.userId}),
-            //     type: "POST",
-            //     data: JSON.stringify(formData),
-            //     contentType: "application/json",
-            //     success: function (data) {
-            //         $("#newOrderDailog").dialog("close");
-            //         console.log(data);
-            //         alert("Pomyślnie utworzono nowe zlecenie!");
-            //         window.location.href = "app.html";
-            //     },
-            //     error: function (xhr, status, error) {
-            //         const msg = {
-            //             id: "errorBox",
-            //             errorMsg: null
-            //         };
-            //         const code = parseInt(xhr.status);
-            //         if (code == 404) {
-            //             msg.errorMsg = "Nie znaleziono podanego adresu!";
-            //         } else {
-            //             msg.errorMsg = "Nieznany błąd: " + code + " : " + xhr.responseText;
-            //         }
-            //         $("#newOrderForm").prepend($.parseHTML(Mustache.render(errorTemplate, msg)));
-            //     }
-            // });
+            $("#errorBox").remove();
+            $.ajax({
+                url: serverURL + "/api/Orders/NewOrder" + "?" + jQuery.param({userId: user.userId}),
+                type: "POST",
+                data: JSON.stringify(formData),
+                contentType: "application/json",
+                success: function (data) {
+                    $("#newOrderDailog").dialog("close");
+                    console.log(data);
+                    alert("Pomyślnie utworzono nowe zlecenie!");
+                    window.location.href = "app.html";
+                },
+                error: function (xhr, status, error) {
+                    const msg = {
+                        id: "errorBox",
+                        errorMsg: null
+                    };
+                    const code = parseInt(xhr.status);
+                    if (code == 404) {
+                        msg.errorMsg = "Nie znaleziono podanego adresu!";
+                    } else {
+                        msg.errorMsg = "Nieznany błąd: " + code + " : " + xhr.responseText;
+                    }
+                    $("#newOrderForm").prepend($.parseHTML(Mustache.render(errorTemplate, msg)));
+                }
+            });
         }
     });
 }

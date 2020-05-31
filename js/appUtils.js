@@ -10,6 +10,9 @@ function remapProducts(orderArray) {
             });
         });
         item.products = output;
+        
+        item.dDate = item.deliveryDate.split("T")[0];
+        item.dTime = item.deliveryDate.split("T")[1];
     }
     return orderArray;
 }

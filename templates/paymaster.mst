@@ -37,7 +37,7 @@
             {{#available}}
             <div class="entry-row">
                 <div class="entry">{{address.addressLine}}</div>
-                <div class="entry">{{deliveryDate}}</div>
+                <div class="entry">{{dDate}}</div>
                 <button class="entry entry-button" value="{{id}}">Zobacz</button>
             </div>
             {{/available}}
@@ -57,7 +57,7 @@
             {{#accepted}}
             <div class="entry-row">
                 <div class="entry">{{address.addressLine}}</div>
-                <div class="entry">{{deliveryDate}}</div>
+                <div class="entry">{{dDate}}</div>
                 <button class="entry entry-button" value="{{id}}">Zobacz</button>
             </div>
             {{/accepted}}
@@ -77,7 +77,7 @@
             {{#finished}}
             <div class="entry-row">
                 <div class="entry">{{address.addressLine}}</div>
-                <div class="entry">{{deliveryDate}}</div>
+                <div class="entry">{{dDate}}</div>
                 <button class="entry entry-button" value="{{id}}">Zobacz</button>
             </div>
             {{/finished}}
@@ -163,11 +163,14 @@
             <div class="entry">Cena: {{cashAmount}}</div>
 
             <div class="entry">
-                <ul>
-                    {{#products}}
-                        <li>{{name}} w ilości {{amount}}</li>
-                    {{/products}}
-                </ul>
+                <div class="block">Lista zakupów</div>
+                <div class="block">
+                    <ul>
+                        {{#products}}
+                            <li><b>{{name}}</b> w ilości <b>{{amount}}</b></li>
+                        {{/products}}
+                    </ul>
+                </div>
             </div>
 
             <div class="entry">Status: {{status}}</div>
@@ -196,11 +199,14 @@
             <div class="entry">Cena: {{cashAmount}}</div>
 
             <div class="entry">
-                <ul>
-                    {{#products}}
-                        <li>{{name}} w ilości {{amount}}</li>
-                    {{/products}}
-                </ul>
+                <div class="block">Lista zakupów</div>
+                <div class="block">
+                    <ul>
+                        {{#products}}
+                            <li><b>{{name}}</b> w ilości <b>{{amount}}</b></li>
+                        {{/products}}
+                    </ul>
+                </div>
             </div>
 
             <div class="entry">Status: {{status}}</div>
@@ -228,11 +234,14 @@
             <div class="entry">Cena: {{cashAmount}}</div>
 
             <div class="entry">
-                <ul>
-                    {{#products}}
-                        <li>{{name}} w ilości {{amount}}</li>
-                    {{/products}}
-                </ul>
+                <div class="block">Lista zakupów</div>
+                <div class="block">
+                    <ul>
+                        {{#products}}
+                            <li><b>{{name}}</b> w ilości <b>{{amount}}</b></li>
+                        {{/products}}
+                    </ul>
+                </div>
             </div>
 
             <div class="entry">Status: {{status}}</div>

@@ -133,6 +133,30 @@ function renderContractorPanel() {
         });
     });
 
+    $(".cash-amount-button").click(function() {
+        const button = $(this);
+        const orderId = button.val();
+        const inputFieldId = "#cash-amount-input-" + orderId;
+        const queryData = {
+            orderId: orderId,
+            userId: user.userId,
+            cashAmount: $(inputFieldId).val()
+        };
+        console.log(queryData);
+        $.ajax({
+            url: serverURL + "/api/OrdersManagement/SelectCashAmount" + "?" + jQuery.param(queryData),
+            type: "PUT",
+            contentType: "application/json",
+            success: function(data) {
+                alert("Pomyślnie ustawione nową cenę!");
+            },
+            error: function(xhr, status, error) {
+                const code = parseInt(xhr.status);
+                alert("Nie udało się ustawić ceny z powodu błędu numer " + code);
+                window.location.href = "app.html";
+            }
+        });
+    });
 
     $("#changePasswordDailog").dialog({ autoOpen: false, width: 600, closeText: "Zamknij panel" });
     $("#changePasswordButton").click(function() {
