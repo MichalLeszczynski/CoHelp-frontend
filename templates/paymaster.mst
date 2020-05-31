@@ -183,7 +183,7 @@
             </div>
 
             <div class="entry">
-                <div class="entry" style="font-size: 42px;">Lista zakupów</div>
+                <div class="entry shopping-list-text">Lista zakupów</div>
                 <div class="entry">
                     <ul>
                         {{#products}}
@@ -239,7 +239,7 @@
             </div>
 
             <div class="entry">
-                <div class="entry" style="font-size: 42px;">Lista zakupów</div>
+                <div class="entry shopping-list-text">Lista zakupów</div>
                 <div class="entry">
                     <ul>
                         {{#products}}
@@ -291,7 +291,7 @@
             </div>
 
             <div class="entry">
-                <div class="entry" style="font-size: 42px;">Lista zakupów</div>
+                <div class="entry shopping-list-text">Lista zakupów</div>
                 <div class="entry">
                     <ul>
                         {{#products}}

@@ -10,7 +10,7 @@
 
 * {
     transition: background-color;
-    transition-duration: 1s;
+    transition-duration: 0.3s;
     font-family: 'Manrope', sans-serif;
 }
 
@@ -73,6 +73,10 @@ a {
     cursor: pointer;
 }
 
+.back-button:hover {
+    background-color: var(--secondary-normal);
+}
+
 .error {
     background-color: #711;
     color: white;
@@ -89,4 +93,14 @@ a {
 
 input, button {
     border: none;
+}
+
+.good {
+    background-color: green;
+    color: white;
+}
+
+.bad {
+    background-color: crimson;
+    color: white;
 }

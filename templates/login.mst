@@ -1,26 +1,24 @@
 <div>
+    <div class="block">
+        <form id="loginForm" style="display: flex; flex-direction: column;">
+            <input class="block" placeholder="Numer telefonu" type="tel" name="phoneNumber" minlength="9" maxlength="9"/>
+            <input class="block" placeholder="Hasło" type="password" name="password" minlength="4" maxlength="64"/>
+            <input id="loginButton" class="block good" type="submit" value="Zaloguj"/>
+        </form>
+    </div>
+    <div class="block">
+        Inne opcje
+    </div>
     <a href="register.html">
         <div class="block back-button">
             Nie mam jeszcze konta i chcę się zarejestrować
         </div>
     </a>
-    <div class="block">
-        <form id="loginForm" style="display: flex; flex-direction: column;">
-            <input class="block" placeholder="Numer telefonu" type="tel" name="phoneNumber" minlength="9" maxlength="9"/>
-            <input class="block" placeholder="Hasło" type="password" name="password" minlength="4" maxlength="64"/>
-            <input id="loginButton" class="block" type="submit" value="Zaloguj"/>
-        </form>
-    </div>
     <a href="resetPassword.html">
         <div class="block back-button">
             Nie pamiętam hasła do mojego konta
         </div>
     </a>
-    <a href="index.html">
-        <div class="block back-button">
-            Powrót do strony głównej
-        </div>
-    </a>
     <div class="block">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius odio sit amet orci ullamcorper cursus.
         Morbi non nunc in metus euismod vulputate. Etiam nec erat nec lectus sagittis suscipit.
@@ -35,4 +33,9 @@
         justo diam pharetra dui, at porta risus ex imperdiet sem. Donec in imperdiet erat, vitae tempor orci.
         Donec massa ipsum, aliquam a ligula sed, facilisis congue magna.
     </div>
+    <a href="index.html">
+        <div class="block back-button">
+            Powrót do strony głównej
+        </div>
+    </a>
 </div>
