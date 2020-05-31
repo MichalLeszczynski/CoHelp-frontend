@@ -280,4 +280,8 @@ function renderPaymasterPanel() {
     $("#newOrderButton").click(function() {
         $("#newOrderDailog").dialog("open");
     });
+
+    $(".panel").on("dialogclose", function( event, ui ) {
+        $(".panel").dialog( "option", "position", { my: "center", at: "center", of: window } );
+    });
 }

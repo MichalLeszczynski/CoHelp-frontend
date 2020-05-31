@@ -12,11 +12,22 @@
         Zmień dane adresowe
     </div>
 
-    <div class="block">
-        Twoje dane:<br>
-        Miasto: <b>{{city}}</b><br>
-        Ulica i numer domu: <b>{{addressLine}}</b><br>
-        Kod pocztowy: <b>{{postalCode}}</b><br>
+    <div class="block" style="font-size: 20px;">
+        <div class="entry" style="display: flex;">
+            <b>Twoje dane adresowe</b>
+        </div>
+        <div style="display: flex; flex-direction: row;">
+            <div class="entry"><b>Miasto</b></div>
+            <div class="entry">{{city}}</div>
+        </div>
+        <div style="display: flex; flex-direction: row;">
+            <div class="entry"><b>Ulica i numer domu</b></div>
+            <div class="entry">{{addressLine}}</div>
+        </div>
+        <div style="display: flex; flex-direction: row;">
+            <div class="entry"><b>Kod pocztowy</b></div>
+            <div class="entry">{{postalCode}}</div>
+        </div>
     </div>
     
 
@@ -187,7 +198,9 @@
                 <div class="block">{{prefferedStore}}</div>
             </div>
             
-            <button class="entry cancel-order-button" value="{{id}}">Anuluj to zlecenie</button>
+            <div style="display: flex; flex-direction: row;">
+                <button class="entry cancel-order-button" value="{{ id }}">Anuluj to zlecenie</button>
+            </div>
         </div>
     </div>
     {{/available}}

@@ -42,6 +42,11 @@
     background-color: green;
 }
 
+.finish-order-button {
+    color: white;
+    background-color: green;
+}
+
 .cancel-order-button {
     color: white;
     background-color: crimson;

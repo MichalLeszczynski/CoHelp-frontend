@@ -91,7 +91,6 @@ function renderContractorPanel() {
             orderId: button.val(),
             userId: user.userId
         };
-        $(".panel").dialog("close");
         $.ajax({
             url: serverURL + "/api/OrdersManagement/AcceptOrder" + "?" + jQuery.param(queryData),
             type: "PUT",
@@ -115,7 +114,6 @@ function renderContractorPanel() {
             orderId: button.val(),
             userId: user.userId
         };
-        $(".panel").dialog("close");
         $.ajax({
             url: serverURL + "/api/OrdersManagement/CancelOrder" + "?" + jQuery.param(queryData),
             type: "PUT",
@@ -128,6 +126,29 @@ function renderContractorPanel() {
             error: function(xhr, status, error) {
                 const code = parseInt(xhr.status);
                 alert("Nie udało się anulować tego zlecenia z powodu błędu numer " + code);
+                window.location.href = "app.html";
+            }
+        });
+    });
+
+    $(".finish-order-button").click(function() {
+        const button = $(this);
+        const queryData = {
+            orderId: button.val(),
+            userId: user.userId
+        };
+        $.ajax({
+            url: serverURL + "/api/OrdersManagement/FinishOrder" + "?" + jQuery.param(queryData),
+            type: "PUT",
+            contentType: "application/json",
+            success: function(data) {
+                alert("Zlecenie zostało oznaczone jako wykonane!");
+                console.log(data);
+                window.location.href = "app.html";
+            },
+            error: function(xhr, status, error) {
+                const code = parseInt(xhr.status);
+                alert("Nie udało się oznaczyć zlecenia jako wykonane z powodu błędu numer " + code);
                 window.location.href = "app.html";
             }
         });
@@ -167,4 +188,9 @@ function renderContractorPanel() {
     $("#changeAdressButton").click(function() {
         $("#changeAdressDailog").dialog("open");
     });
+
+    $(".panel").on("dialogclose", function( event, ui ) {
+        $(".panel").dialog( "option", "position", { my: "center", at: "center", of: window } );
+    });
+
 }
