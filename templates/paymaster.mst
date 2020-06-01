@@ -119,6 +119,19 @@
 
     <div id="newOrderDailog" class="panel" title="Nowe zamówienie">
         <div class="block">
+        
+            <div class="block">
+                Lista z produktami
+            </div>
+
+            <div class="block" id="product-list">
+
+            </div>
+            
+            <div class="block">
+                <button class="entry" onclick="addElement()">Dodaj produkt</button>
+            </div>
+
             <form id="newOrderForm" style="display: flex; flex-direction: column;">
 
                 <div class="block">
@@ -129,10 +142,6 @@
                     <input class="block" placeholder="Miasto"             type="text" name="city"/>
                     <input class="block" placeholder="Ulica i numer domu" type="text" name="addressLine"/>
                     <input class="block" placeholder="Kod pocztowy"       type="text" name="postalCode"/>
-                </div>
-
-                <div class="block">
-                    Lista z produktami
                 </div>
 
                 <div class="block">

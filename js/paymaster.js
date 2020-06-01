@@ -1,3 +1,62 @@
+// Product list script
+const productArray = [];
+
+function renderList() {
+    const listDoom = $("#product-list");
+    listDoom.children().remove();
+    productArray.forEach(function(item, index) {
+        const str = `
+            <div class="entry">
+                <div class="input-box" style="display: flex; flex-direction: row;">
+                    <input class="field block product-label" type="text" placeholder="Nazwa produktu" value="{{product}}""/>
+                    <input class="field block amount-label" type="text" placeholder="Ilość produktu" value="{{amount}}""/>
+                    <button class="field block bad" onclick="deleteInput({{id}})" type="button">Usuń</button>
+                </div>
+            </div>
+        `;
+        const element = $.parseHTML(Mustache.render(str, {id: index, product: item.productName, amount: item.amount}));
+        listDoom.append(element);
+    });
+
+    $(".product-label").change(function() {
+        const arr = [];
+        $(".product-label").each(function() {
+            arr.push($(this).val());
+        });
+
+        for(let i = 0; i < productArray.length; i++) {
+            productArray[i].productName = arr[i];
+        }
+    });
+
+    $(".amount-label").change(function() {
+        const arr = [];
+        $(".amount-label").each(function() {
+            arr.push($(this).val());
+        });
+
+        for(let i = 0; i < productArray.length; i++) {
+            productArray[i].amount = arr[i];
+        }
+    });
+}
+
+function deleteInput(id) {
+    console.log(id);
+    productArray.splice(id, 1);
+    renderList();
+}
+
+function addElement() {
+    const element = {
+        productName: "",
+        amount: ""
+    };
+    productArray.push(element);
+    renderList();
+}
+
+// Endpoints and stuff
 function getPaymasterOrders() {
     panelData.available = [];
     panelData.accepted = [];
@@ -89,11 +148,10 @@ function prepareNewOrderForm() {
             delete formData.dTime;
             delete formData.dDate;
             
-            formData.products = {
-                kasza: "12 x 500 g",
-                mleko: "20l",
-                makaron: "23.5 kg"
-            };
+            formData.products = {};
+            for(let i = 0; i < productArray.length; i++) {
+                formData.products[productArray[i].productName] = productArray[i].amount;
+            }
             
             console.log(formData);
             $("#errorBox").remove();
@@ -126,43 +184,6 @@ function prepareNewOrderForm() {
     });
 }
 
-const productArray = [];
-
-function renderInputs() {
-    const inputs = $(".inputs");
-    inputs.children().remove();
-    productArray.forEach(function(item, index) {
-        const str = `
-            <div class="entry">
-                <div class="field block" style="background-color: {{color}}"></div>
-                <div class="input-box">
-                    <input class="field block input-label" type="text" placeholder="label" value="{{value}}" id="{{id}}"/>
-                    <button class="field block" onclick="deleteInput({{id}})" type="button">Delete box</button>
-                </div>
-            </div>
-        `;
-        const element = $.parseHTML(Mustache.render(str, {color: item.color, id: index, value: item.label}));
-        inputs.append(element);
-    });
-
-    $(".input-label").change(function() {
-        labelsArr = [];
-        $(".input-label").each(function() {
-            labelsArr.push($(this).val());
-        });
-
-        for(let i = 0; i < productArray.length; i++) {
-            productArray[i].label = labelsArr[i];
-        }
-    });
-}
-
-function deleteInput(id) {
-    console.log(id);
-    productArray.splice(id, 1);
-    renderInputs();
-    updateCanvas();
-}
 
 function renderPaymasterPanel() {
     console.log(user);
@@ -208,37 +229,11 @@ function renderPaymasterPanel() {
         $("#finished-list").html("Pusto tu...");
     }
 
-
     // prepare buttons
     $(".entry-button").click(function() {
         const button = $(this);
         const id = "#panel-" + button.val();
         $(id).dialog("open");
-    });
-
-    
-    $(".new-order-button").click(function() {
-        const button = $(this);
-        const queryData = {
-            orderId: button.val(),
-            userId: user.userId
-        };
-        $(".panel").dialog("close");
-        $.ajax({
-            url: serverURL + "/api/OrdersManagement/AcceptOrder" + "?" + jQuery.param(queryData),
-            type: "PUT",
-            contentType: "application/json",
-            success: function(data) {
-                alert("Zlecenie przyjęte pomyślnie!");
-                console.log(data);
-                window.location.href = "app.html";
-            },
-            error: function(xhr, status, error) {
-                const code = parseInt(xhr.status);
-                alert("Nie udało się przyjąć tego zlecenia z powodu błędu numer " + code);
-                window.location.href = "app.html";
-            }
-        });
     });
 
     $(".cancel-order-button").click(function() {
@@ -284,4 +279,6 @@ function renderPaymasterPanel() {
     $(".panel").on("dialogclose", function( event, ui ) {
         $(".panel").dialog( "option", "position", { my: "center", at: "center", of: window } );
     });
+    addElement();
+    renderList();
 }
