@@ -8,6 +8,12 @@
     --secondary-dark: #222;
 }
 
+body {
+    transform: scale(0.9);
+    transform-origin: 0 0;
+    margin-left: 9vw;
+}
+
 * {
     transition: background-color;
     transition-duration: 0.3s;
