@@ -125,3 +125,9 @@ input, button {
     padding: 12px;
     color: black;
 }
+
+@media only screen and (max-device-width: 700px) {
+    input, button, select {
+        font-size: 32px;
+    }
+}

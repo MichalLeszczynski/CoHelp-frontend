@@ -95,3 +95,15 @@
     color: white;
     padding: 16px;
 }
+
+@media only screen and (max-device-width: 700px) {
+    .entry {
+        font-size: 24px;
+    }
+
+    .ui-dialog-title {
+        font-size: 28px;
+        padding: 8px;
+        flex: 1;
+    }
+}
