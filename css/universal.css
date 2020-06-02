@@ -1,7 +1,7 @@
 :root {
-    --primary-light: #EEE;
-    --primary-normal: #DDD;
-    --primary-dark: #CCC;
+    --primary-light: #FFF;
+    --primary-normal: #EEE;
+    --primary-dark: #DDD;
 
     --secondary-light: #444;
     --secondary-normal: #333;
@@ -9,14 +9,15 @@
 }
 
 body {
-    transform: scale(0.9);
-    transform-origin: 0 0;
-    margin-left: 9vw;
+    background-image: url("blured_map.jpg");
+    background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 94vh;
 }
 
 * {
-    transition: background-color;
-    transition-duration: 0.3s;
     font-family: 'Manrope', sans-serif;
 }
 
@@ -59,12 +60,12 @@ a {
 }
 
 #content-box {
-    background-color: var(--primary-normal);
+    background-color: var(--primary-light);
     font-size: 14px;
 }
 
 .text-bar {
-    background-color: var(--primary-light);
+    background-color: var(--primary-normal);
     color: black;
     text-align: center;
     font-size: 26px;
@@ -84,11 +85,11 @@ a {
 }
 
 .error {
-    background-color: #711;
+    background-color: crimson;
     color: white;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     margin: 8px;
-    padding: 6px;
+    padding: 10px;
     display: inline-block;
 }
 
@@ -109,4 +110,18 @@ input, button {
 .bad {
     background-color: crimson;
     color: white;
+}
+
+.form-label {
+    font-size: 18px;
+    background-color: var(--secondary-normal);
+    padding: 10px;
+    color: white;
+}
+
+.form-label-2 {
+    font-size: 22px;
+    background-color: var(--primary-light);
+    padding: 12px;
+    color: black;
 }
