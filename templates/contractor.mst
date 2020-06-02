@@ -142,9 +142,9 @@
                 <div class="block">{{dTime}}</div>
             </div>
 
-            <div class="entry">
+            <div class="entry" style="display: flex; flex-direction: column;">
                 <div class="entry shopping-list-text">Lista zakupów</div>
-                <div class="entry">
+                <div class="entry" style="background-color: var(--primary-light);">
                     <ul>
                         {{#products}}
                             <li><b>{{name}}</b> w ilości <b>{{amount}}</b></li>
@@ -198,15 +198,26 @@
                 <button class="block cash-amount-button" value="{{ id }}">Ustaw nową cenę</button>
             </div>
 
-            <div class="entry">
+            <div class="entry" style="display: flex; flex-direction: column;">
                 <div class="entry shopping-list-text">Lista zakupów</div>
-                <div class="entry">
+                <div class="entry" style="background-color: var(--primary-light);">
                     <ul>
                         {{#products}}
                             <li><b>{{name}}</b> w ilości <b>{{amount}}</b></li>
                         {{/products}}
                     </ul>
                 </div>
+            </div>
+
+            <div class="block" id="missing-item-checkboxes-{{ id }}">
+                <div class="entry shopping-list-text">Brakujące produkty</div>
+                <div style="margin-top: 8px;"></div>
+                {{#products}}
+                    <input type="checkbox" name="product" value="{{name}}"><label>{{name}}</label><br>
+                {{/products}}
+                <div style="margin-top: 8px;"></div>
+                <button class="entry bad missing-item-button" style="width: 80%; margin: auto;" value="{{ id }}">Powiadom o braku zaznaczonych produktów</button>
+                <div style="margin-top: 8px;"></div>
             </div>
 
             <div class="entry">
@@ -255,9 +266,9 @@
                 <div class="block">{{cashAmount}}</div>
             </div>
 
-            <div class="entry">
+            <div class="entry" style="display: flex; flex-direction: column;">
                 <div class="entry shopping-list-text">Lista zakupów</div>
-                <div class="entry">
+                <div class="entry" style="background-color: var(--primary-light);">
                     <ul>
                         {{#products}}
                             <li><b>{{name}}</b> w ilości <b>{{amount}}</b></li>

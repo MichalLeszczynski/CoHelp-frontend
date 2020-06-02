@@ -179,6 +179,46 @@ function renderContractorPanel() {
         });
     });
 
+    $(".missing-item-button").click(function() {
+        const button = $(this);
+        const orderId = button.val();
+        const boxField = "#missing-item-checkboxes-" + orderId;
+
+        const checkboxes = $(boxField).find("input");
+
+        const missingProducts = [];
+        $.each($(boxField).find("input[name='product']:checked"), function(){
+            missingProducts.push($(this).val());
+        });
+
+        console.log(missingProducts);
+
+        if(missingProducts.length === 0) {
+            alert("Żaden z produktów nie jest zaznaczony!");
+            return;
+        }
+
+        const queryData = {
+            orderId: orderId,
+            contractorId: user.userId,
+        };
+
+        $.ajax({
+            url: serverURL + "/api/OrdersManagement/ReportLackOfItems" + "?" + jQuery.param(queryData),
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(missingProducts),
+            success: function(data) {
+                alert("Pomyślnie powiadomiono zleceniodawcę SMS\'em o brakujących produktach!");
+            },
+            error: function(xhr, status, error) {
+                const code = parseInt(xhr.status);
+                alert("Nie udało się powiadomić o brakujących produktach z powodu błędu numer " + code);
+                window.location.href = "app.html";
+            }
+        });
+    });
+
     $("#changePasswordDailog").dialog({ autoOpen: false, width: 600, closeText: "Zamknij panel" });
     $("#changePasswordButton").click(function() {
         $("#changePasswordDailog").dialog("open");

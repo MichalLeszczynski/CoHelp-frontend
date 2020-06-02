@@ -103,13 +103,13 @@ input, button {
 }
 
 .good {
-    background-color: green;
-    color: white;
+    background-color: green !important;
+    color: white !important;
 }
 
 .bad {
-    background-color: crimson;
-    color: white;
+    background-color: crimson !important;
+    color: white !important;
 }
 
 .form-label {

@@ -7,10 +7,10 @@ function renderList() {
     productArray.forEach(function(item, index) {
         const str = `
             <div class="entry">
-                <div class="input-box" style="display: flex; flex-direction: row;">
-                    <input class="field block product-label" type="text" placeholder="Nazwa produktu" value="{{product}}""/>
-                    <input class="field block amount-label" type="text" placeholder="Ilość produktu" value="{{amount}}""/>
-                    <button class="field block bad" onclick="deleteInput({{id}})" type="button">Usuń</button>
+                <div class="input-box" style="display: flex; flex-direction: row; flex-wrap: wrap;">
+                    <input style="flex: 1;" class="field block product-label" type="text" placeholder="Nazwa produktu" value="{{product}}""/>
+                    <input style="flex: 1;" class="field block amount-label" type="text" placeholder="Ilość produktu" value="{{amount}}""/>
+                    <button style="flex: 1;" class="field block bad" onclick="deleteInput({{id}})" type="button">Usuń</button>
                 </div>
             </div>
         `;

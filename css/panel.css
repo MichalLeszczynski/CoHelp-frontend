@@ -13,7 +13,7 @@
     display: flex;
     flex: 1;
     padding: 6px;
-    margin: 6px;
+    margin: 4px;
 }
 
 .entry {
@@ -22,7 +22,7 @@
     display: flex;
     flex: 1;
     padding: 6px;
-    margin: 6px;
+    margin: 4px;
     justify-content: center;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
@@ -90,10 +90,10 @@
 }
 
 .shopping-list-text {
-    font-size: 42px;
+    font-size: 18px;
     background-color: var(--secondary-normal);
     color: white;
-    padding: 16px;
+    padding: 5px;
 }
 
 @media only screen and (max-device-width: 700px) {
@@ -105,5 +105,15 @@
         font-size: 28px;
         padding: 8px;
         flex: 1;
+    }
+
+    select {
+        font: inherit;
+        font-size: 30px;
+    }    
+
+    label {
+        font-size: 30px;
+        margin-left: 30px;
     }
 }

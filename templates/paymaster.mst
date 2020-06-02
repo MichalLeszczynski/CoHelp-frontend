@@ -120,7 +120,7 @@
     <div id="newOrderDailog" class="panel" title="Nowe zamówienie">
         <div class="block">
         
-            <div class="block">
+            <div class="block form-label">
                 Lista z produktami
             </div>
 
@@ -134,7 +134,7 @@
 
             <form id="newOrderForm" style="display: flex; flex-direction: column;">
 
-                <div class="block">
+                <div class="block form-label">
                     Miejsce dostawy
                 </div>
 
@@ -148,7 +148,7 @@
                     <input class="block" placeholder="Preferowany sklep" type="text" name="prefferedStore"/>
                 </div>
 
-                <div class="block">
+                <div class="block form-label">
                     Data i czas dostawy
                 </div>
 
@@ -157,7 +157,7 @@
                     <input class="block" type="time" placeholder="Czas dostawy" name="dTime"/>
                 </div>
 
-                <input class="block" type="submit" value="Wyślij nowe zamówienie"/>
+                <input class="block good" type="submit" value="Wyślij nowe zamówienie"/>
             </form>
         </div>
     </div>
@@ -191,9 +191,9 @@
                 <div class="block">{{dTime}}</div>
             </div>
 
-            <div class="entry">
+            <div class="entry" style="display: flex; flex-direction: column;">
                 <div class="entry shopping-list-text">Lista zakupów</div>
-                <div class="entry">
+                <div class="entry" style="background-color: var(--primary-light);">
                     <ul>
                         {{#products}}
                             <li><b>{{name}}</b> w ilości <b>{{amount}}</b></li>
@@ -247,9 +247,9 @@
                 <div class="block">{{cashAmount}}</div>
             </div>
 
-            <div class="entry">
+            <div class="entry" style="display: flex; flex-direction: column;">
                 <div class="entry shopping-list-text">Lista zakupów</div>
-                <div class="entry">
+                <div class="entry" style="background-color: var(--primary-light);">
                     <ul>
                         {{#products}}
                             <li><b>{{name}}</b> w ilości <b>{{amount}}</b></li>
@@ -299,9 +299,9 @@
                 <div class="block">{{cashAmount}}</div>
             </div>
 
-            <div class="entry">
+            <div class="entry" style="display: flex; flex-direction: column;">
                 <div class="entry shopping-list-text">Lista zakupów</div>
-                <div class="entry">
+                <div class="entry" style="background-color: var(--primary-light);">
                     <ul>
                         {{#products}}
                             <li><b>{{name}}</b> w ilości <b>{{amount}}</b></li>
